@@ -58,38 +58,42 @@ minetest.register_craft({
 
 -- STAIRS
 
-stairs.register_stair_and_slab(
-  "basalt",
-  "basalt_fertilizer:basalt",
-  {cracky = 3},
-  {"node_basalt.png"},
-  "Basalt Stair",
-  "Basalt Slab",
-  default.node_sound_stone_defaults(),
-  true
-)
+if minetest.get_modpath("stairs") then
 
-stairs.register_stair_and_slab(
-  "basalt_brick",
-  "basalt_fertilizer:basalt_brick",
-  {cracky = 2},
-  {"node_basalt_brick.png"},
-  "Basalt Brick Stair",
-  "Basalt Brick Slab",
-  default.node_sound_stone_defaults(),
-  false
-)
+  stairs.register_stair_and_slab(
+    "basalt",
+    "basalt_fertilizer:basalt",
+    {cracky = 3},
+    {"node_basalt.png"},
+    "Basalt Stair",
+    "Basalt Slab",
+    default.node_sound_stone_defaults(),
+    true
+  )
 
-stairs.register_stair_and_slab(
-  "basalt_block",
-  "basalt_fertilizer:basalt_block",
-  {cracky = 2},
-  {"node_basalt_block.png"},
-  "Basalt Block Stair",
-  "Basalt Block Slab",
-  default.node_sound_stone_defaults(),
-  true
-)
+  stairs.register_stair_and_slab(
+    "basalt_brick",
+    "basalt_fertilizer:basalt_brick",
+    {cracky = 2},
+    {"node_basalt_brick.png"},
+    "Basalt Brick Stair",
+    "Basalt Brick Slab",
+    default.node_sound_stone_defaults(),
+    false
+  )
+
+  stairs.register_stair_and_slab(
+    "basalt_block",
+    "basalt_fertilizer:basalt_block",
+    {cracky = 2},
+    {"node_basalt_block.png"},
+    "Basalt Block Stair",
+    "Basalt Block Slab",
+    default.node_sound_stone_defaults(),
+    true
+  )
+
+end
 
 -- MAPGEN
 
