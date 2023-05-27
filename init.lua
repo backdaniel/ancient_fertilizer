@@ -34,6 +34,11 @@ local saplings = {
   ["default:emergent_jungle_sapling"] = minetest.get_modpath("default") .. "/schematics/emergent_jungle_tree.mts",
 }
 
+function isCreative(player_name)
+  local player_privs = minetest.get_player_privs(player_name)
+  return player_privs.creative or minetest.is_creative_enabled(player_name)
+end
+
 
 -- NODES
 
@@ -69,16 +74,20 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
     if pointed_thing.type ~= "node" then
       return
     end
+    
     local node = minetest.get_node(pointed_thing.under)
     if crops[node.name] and not itemstack:is_empty() and user then
       minetest.set_node(pointed_thing.under, {name = crops[node.name]})
-      itemstack:take_item()
+      if not isCreative(user:get_player_name()) then
+        itemstack:take_item()
+      end
     end
     if saplings[node.name] and not itemstack:is_empty() and user then
       minetest.remove_node(pointed_thing.under)
-      -- minetest.place_schematic(pointed_thing.under, saplings[node.name])
       minetest.place_schematic({x=pointed_thing.under.x, y=pointed_thing.under.y-1, z=pointed_thing.under.z}, saplings[node.name], "random", {}, false, "place_center_x,place_center_z")
-      itemstack:take_item()
+      if not isCreative(user:get_player_name()) then
+        itemstack:take_item()
+      end
     end
     return itemstack
   end
