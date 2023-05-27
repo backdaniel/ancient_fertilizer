@@ -1,5 +1,42 @@
 basalt_fertilizer = {}
 
+-- HELPERS
+
+
+  ["farming:seed_cotton"] = true,
+  ["farming:cotton_1"] = true,
+  ["farming:cotton_2"] = true,
+  ["farming:cotton_3"] = true,
+  ["farming:cotton_4"] = true,
+  ["farming:cotton_5"] = true,
+  ["farming:cotton_6"] = true,
+  ["farming:cotton_7"] = true,
+  ["farming:cotton_8"] = true,
+}
+
+local crops_progression = {
+  ["farming:seed_wheat"] = "farming:wheat_1",
+  ["farming:wheat_1"] = "farming:wheat_2",
+  ["farming:wheat_2"] = "farming:wheat_3",
+  ["farming:wheat_3"] = "farming:wheat_4",
+  ["farming:wheat_4"] = "farming:wheat_5",
+  ["farming:wheat_5"] = "farming:wheat_6",
+  ["farming:wheat_6"] = "farming:wheat_7",
+  ["farming:wheat_7"] = "farming:wheat_8",
+  ["farming:seed_cotton"] = "farming:cotton_1",
+  ["farming:cotton_1"] = "farming:cotton_2",
+  ["farming:cotton_2"] = "farming:cotton_3",
+  ["farming:cotton_3"] = "farming:cotton_4",
+  ["farming:cotton_4"] = "farming:cotton_5",
+  ["farming:cotton_5"] = "farming:cotton_6",
+  ["farming:cotton_6"] = "farming:cotton_7",
+  ["farming:cotton_7"] = "farming:cotton_8",
+}
+
+function next_stage(node_name)
+  return crops_progression[node_name]
+end
+
 -- NODES
 
 minetest.register_node("basalt_fertilizer:basalt", {
@@ -32,14 +69,18 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
   inventory_image = "item_fertilizer.png"
 
   on_use = function(itemstack, user, pointed_thing)
-    if not check_pointed(itemstack, user, pointed_thing) then
-      return itemstack
+    if pointed_thing.type ~= "node" then
+      return
     end
-    if itemstack:take_item() ~= nil and user ~= nil then
-      -- dosomething
+    local node = minetest.get_node(pointed_thing.under)
+    local next_stage_node = next_stage(node.name)
+    if next_stage_node and not itemstack:is_empty() and user then
+      minetest.set_node(pointed_thing.under, {name = next_stage_node})
+      itemstack:take_item()
     end
     return itemstack
   end
+
 
 })
 
