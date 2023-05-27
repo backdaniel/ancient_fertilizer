@@ -70,7 +70,6 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
       return
     end
     local node = minetest.get_node(pointed_thing.under)
-    local next_stage_node = next_stage(node.name)
     if crops[node.name] and not itemstack:is_empty() and user then
       minetest.set_node(pointed_thing.under, {name = crops[node.name]})
       itemstack:take_item()
