@@ -2,7 +2,7 @@ basalt_fertilizer = {}
 
 -- HELPERS
 
-local crops_progression = {
+local crops = {
   ["farming:seed_wheat"] = "farming:wheat_1",
   ["farming:wheat_1"] = "farming:wheat_2",
   ["farming:wheat_2"] = "farming:wheat_3",
@@ -21,9 +21,19 @@ local crops_progression = {
   ["farming:cotton_7"] = "farming:cotton_8",
 }
 
-function next_stage(node_name)
-  return crops_progression[node_name]
-end
+local saplings = {
+  ["default:sapling"] = minetest.get_modpath("default") .. "/schematics/apple_tree.mts",
+  ["default:junglesapling"] = minetest.get_modpath("default") .. "/schematics/jungle_tree.mts",
+  ["default:pine_sapling"] = minetest.get_modpath("default") .. "/schematics/pine_tree.mts",
+  ["default:acacia_sapling"] = minetest.get_modpath("default") .. "/schematics/acacia_tree.mts",
+  ["default:aspen_sapling"] = minetest.get_modpath("default") .. "/schematics/aspen_tree.mts",
+  ["default:bush_sapling"] = minetest.get_modpath("default") .. "/schematics/bush.mts",
+  ["default:acacia_bush_sapling"] = minetest.get_modpath("default") .. "/schematics/acacia_bush.mts",
+  ["default:pine_bush_sapling"] = minetest.get_modpath("default") .. "/schematics/pine_bush.mts",
+  ["default:blueberry_bush_sapling"] = minetest.get_modpath("default") .. "/schematics/blueberry_bush.mts",
+  ["default:emergent_jungle_sapling"] = minetest.get_modpath("default") .. "/schematics/emergent_jungle_tree.mts",
+}
+
 
 -- NODES
 
@@ -61,8 +71,13 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
     end
     local node = minetest.get_node(pointed_thing.under)
     local next_stage_node = next_stage(node.name)
-    if next_stage_node and not itemstack:is_empty() and user then
-      minetest.set_node(pointed_thing.under, {name = next_stage_node})
+    if crops[node.name] and not itemstack:is_empty() and user then
+      minetest.set_node(pointed_thing.under, {name = crops[node.name]})
+      itemstack:take_item()
+    end
+    if saplings[node.name] and not itemstack:is_empty() and user then
+      minetest.remove_node(pointed_thing.under)
+      minetest.place_schematic(pointed_thing.under, saplings[node.name])
       itemstack:take_item()
     end
     return itemstack
