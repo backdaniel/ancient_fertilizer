@@ -113,8 +113,16 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-  output = "basalt_fertilizer:fertilizer",
+  output = "basalt_fertilizer:fertilizer 4",
   recipe = {{"basalt_fertilizer:basalt"}}
+})
+
+minetest.register_craft({
+  output = "basalt_fertilizer:basalt",
+  recipe = {
+    {"basalt_fertilizer:fertilizer", "basalt_fertilizer:fertilizer"},
+    {"basalt_fertilizer:fertilizer", "basalt_fertilizer:fertilizer"},
+  }
 })
 
 -- STAIRS
