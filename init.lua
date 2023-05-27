@@ -2,18 +2,6 @@ basalt_fertilizer = {}
 
 -- HELPERS
 
-
-  ["farming:seed_cotton"] = true,
-  ["farming:cotton_1"] = true,
-  ["farming:cotton_2"] = true,
-  ["farming:cotton_3"] = true,
-  ["farming:cotton_4"] = true,
-  ["farming:cotton_5"] = true,
-  ["farming:cotton_6"] = true,
-  ["farming:cotton_7"] = true,
-  ["farming:cotton_8"] = true,
-}
-
 local crops_progression = {
   ["farming:seed_wheat"] = "farming:wheat_1",
   ["farming:wheat_1"] = "farming:wheat_2",
