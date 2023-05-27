@@ -1,5 +1,7 @@
 basalt_fertilizer = {}
 
+local S = minetest.get_translator("basalt_fertilizer")
+
 -- HELPERS
 
 local crops = {
@@ -43,14 +45,14 @@ end
 -- NODES
 
 minetest.register_node("basalt_fertilizer:basalt", {
-  description = "Basalt",
+  description = S("Basalt"),
   tiles = {"node_basalt.png"},
   groups = {cracky = 3, stone = 1},
   sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_node("basalt_fertilizer:basalt_block", {
-  description = "Basalt Block",
+  description = S("Basalt Block"),
   tiles = {"node_basalt_block.png"},
   is_ground_content = false,
   groups = {cracky = 2, stone = 1},
@@ -58,7 +60,7 @@ minetest.register_node("basalt_fertilizer:basalt_block", {
 })
 
 minetest.register_node("basalt_fertilizer:basalt_brick", {
-  description = "Basalt Brick",
+  description = S("Basalt Brick"),
   paramtype2 = "facedir",
   place_param2 = 0,
   tiles = {"node_basalt_brick.png"},
@@ -68,7 +70,7 @@ minetest.register_node("basalt_fertilizer:basalt_brick", {
 })
 
 minetest.register_craftitem("basalt_fertilizer:fertilizer", {
-  description = "Fertilizer",
+  description = S("Mineral Fertilizer"),
   inventory_image = "item_fertilizer.png",
   on_use = function(itemstack, user, pointed_thing)
     if pointed_thing.type ~= "node" then
@@ -134,8 +136,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt",
     {cracky = 3},
     {"node_basalt.png"},
-    "Basalt Stair",
-    "Basalt Slab",
+    S("Basalt Stair"),
+    S("Basalt Slab"),
     default.node_sound_stone_defaults(),
     true
   )
@@ -145,8 +147,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_brick",
     {cracky = 2},
     {"node_basalt_brick.png"},
-    "Basalt Brick Stair",
-    "Basalt Brick Slab",
+    S("Basalt Brick Stair"),
+    S("Basalt Brick Slab"),
     default.node_sound_stone_defaults(),
     false
   )
@@ -156,8 +158,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_block",
     {cracky = 2},
     {"node_basalt_block.png"},
-    "Basalt Block Stair",
-    "Basalt Block Slab",
+    S("Basalt Block Stair"),
+    S("Basalt Block Slab"),
     default.node_sound_stone_defaults(),
     true
   )
