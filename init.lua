@@ -54,8 +54,7 @@ minetest.register_node("basalt_fertilizer:basalt_brick", {
 
 minetest.register_craftitem("basalt_fertilizer:fertilizer", {
   description = "Fertilizer",
-  inventory_image = "item_fertilizer.png"
-
+  inventory_image = "item_fertilizer.png",
   on_use = function(itemstack, user, pointed_thing)
     if pointed_thing.type ~= "node" then
       return
@@ -68,8 +67,6 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
     end
     return itemstack
   end
-
-
 })
 
 -- CRAFTS
