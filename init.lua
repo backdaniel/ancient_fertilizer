@@ -7,6 +7,7 @@ minetest.register_node("basalt_fertilizer:basalt", {
   tiles = {"node_basalt.png"},
   groups = {cracky = 3, stone = 1},
   sounds = default.node_sound_stone_defaults(),
+  light_source = 10,
 })
 
 minetest.register_node("basalt_fertilizer:basalt_block", {
@@ -101,15 +102,34 @@ minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
   wherein         = {"default:stone"},
-  clust_scarcity  = 44 * 44 * 44,
-  clust_size      = 11,
-  y_max           = 31000,
-  y_min           = -31000,
+  clust_scarcity  = 16 * 16 * 16,
+  clust_size      = 4,
+  y_max           = 0,
+  y_min           = -200,
   noise_threshold = 0.0,
   noise_params    = {
     offset = 0.5,
     scale = 0.2,
-    spread = {x = 6, y = 6, z = 3},
+    spread = {x = 5, y = 5, z = 5},
+    seed = 111,
+    octaves = 1,
+    persist = 0.0
+  },
+})
+
+minetest.register_ore({
+  ore_type        = "blob",
+  ore             = "basalt_fertilizer:basalt",
+  wherein         = {"default:stone"},
+  clust_scarcity  = 20 * 20 * 20,
+  clust_size      = 6,
+  y_max           = 0,
+  y_min           = -200,
+  noise_threshold = 0.0,
+  noise_params    = {
+    offset = 0.5,
+    scale = 0.2,
+    spread = {x = 5, y = 5, z = 5},
     seed = 111,
     octaves = 1,
     persist = 0.0
