@@ -1,0 +1,11 @@
+# textdomain: basalt_fertilizer
+Basalt=
+Basalt Block=
+Basalt Brick=
+Mineral Fertilizer=
+Basalt Stair=
+Basalt Slab=
+Basalt Brick Stair=
+Basalt Brick Slab=
+Basalt Block Stair=
+Basalt Block Slab=
