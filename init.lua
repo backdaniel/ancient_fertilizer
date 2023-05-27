@@ -30,6 +30,17 @@ minetest.register_node("basalt_fertilizer:basalt_brick", {
 minetest.register_craftitem("basalt_fertilizer:fertilizer", {
   description = "Fertilizer",
   inventory_image = "item_fertilizer.png"
+
+  on_use = function(itemstack, user, pointed_thing)
+    if not check_pointed(itemstack, user, pointed_thing) then
+      return itemstack
+    end
+    if itemstack:take_item() ~= nil and user ~= nil then
+      -- dosomething
+    end
+    return itemstack
+  end
+
 })
 
 -- CRAFTS
