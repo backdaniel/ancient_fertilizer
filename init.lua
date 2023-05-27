@@ -101,7 +101,7 @@ minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
   wherein         = {"default:stone"},
-  clust_scarcity  = 46 * 46 * 46,
+  clust_scarcity  = 44 * 44 * 44,
   clust_size      = 11,
   y_max           = 31000,
   y_min           = -31000,
