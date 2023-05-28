@@ -30,7 +30,7 @@ if minetest.get_modpath("default") then
     ["default:emergent_jungle_sapling"] = "default:emergent_jungle_sapling",
     ["default:large_cactus_seedling"] = "default:large_cactus_seedling",
     ["default:sand_with_kelp"] = "default:sand_with_kelp",
-  }
+  })
 end
 
 if minetest.get_modpath("flowers") then
@@ -47,11 +47,11 @@ if minetest.get_modpath("flowers") then
     ["flowers:mushroom_brown"] = "flowers:mushroom_brown",
     ["flowers:waterlily"] = "flowers:waterlily",
     ["flowers:waterlily_waving"] = "flowers:waterlily",
-  }
+  })
 end
 
 if minetest.get_modpath("farming") then
   basalt_fertilizer.add_vegetation({
     ["farming:cotton_wild"] = "farming:cotton_wild",
-  }
+  })
 end
