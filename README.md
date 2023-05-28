@@ -7,7 +7,7 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Basalt starts at y = 0 (sea level).
 - Supports flora duplication (including flowers).
 - Supports sapling duplication (including Large Cactus Seedling).
-- Works on Kelp (considered vegetation).
+- Kelp is now renewable.
 - Waterlily is now renewable.
 - Wild Cotton can now be placed in survival, and is renewable.
 
