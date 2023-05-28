@@ -1,62 +1,19 @@
 basalt_fertilizer = {}
 
+local modpath = minetest.get_modpath("basalt_fertilizer")
+
 local S = minetest.get_translator("basalt_fertilizer")
+
+local vegetation = {}
 
 -- HELPERS
 
-local vegetation = {
-  ["default:grass_1"] = "default:grass_1",
-  ["default:grass_2"] = "default:grass_1",
-  ["default:grass_3"] = "default:grass_1",
-  ["default:grass_4"] = "default:grass_1",
-  ["default:grass_5"] = "default:grass_1",
-  ["default:dry_grass_1"] = "default:dry_grass_1",
-  ["default:dry_grass_2"] = "default:dry_grass_1",
-  ["default:dry_grass_3"] = "default:dry_grass_1",
-  ["default:dry_grass_4"] = "default:dry_grass_1",
-  ["default:dry_grass_5"] = "default:dry_grass_1",
-  ["default:fern_1"] = "default:fern_1",
-  ["default:fern_2"] = "default:fern_1",
-  ["default:fern_3"] = "default:fern_1",
-  ["default:marram_grass_1"] = "default:marram_grass_1",
-  ["default:marram_grass_2"] = "default:marram_grass_1",
-  ["default:marram_grass_3"] = "default:marram_grass_1",
-  ["default:junglegrass"] = "default:junglegrass",
-  ["default:dry_shrub"] = "default:dry_shrub",
-  ["flowers:dandelion_white"] = "flowers:dandelion_white",
-  ["flowers:tulip_black"] = "flowers:tulip_black",
-  ["flowers:chrysanthemum_green"] = "flowers:chrysanthemum_green",
-  ["flowers:dandelion_yellow"] = "flowers:dandelion_yellow",
-  ["flowers:tulip"] = "flowers:tulip",
-  ["flowers:geranium"] = "flowers:geranium",
-  ["flowers:viola"] = "flowers:viola",
-  ["flowers:rose"] = "flowers:rose",
-  ["flowers:mushroom_red"] = "flowers:mushroom_red",
-  ["flowers:mushroom_brown"] = "flowers:mushroom_brown",
-  ["flowers:waterlily"] = "flowers:waterlily",
-  ["flowers:waterlily_waving"] = "flowers:waterlily",
-  ["farming:cotton_wild"] = "farming:cotton_wild",
-  ["default:sapling"] = "default:sapling",
-  ["default:junglesapling"] = "default:junglesapling",
-  ["default:pine_sapling"] = "default:pine_sapling",
-  ["default:acacia_sapling"] = "default:acacia_sapling",
-  ["default:aspen_sapling"] = "default:aspen_sapling",
-  ["default:bush_sapling"] = "default:bush_sapling",
-  ["default:acacia_bush_sapling"] = "default:acacia_bush_sapling",
-  ["default:pine_bush_sapling"] = "default:pine_bush_sapling",
-  ["default:blueberry_bush_sapling"] = "default:blueberry_bush_sapling",
-  ["default:emergent_jungle_sapling"] = "default:emergent_jungle_sapling",
-  ["default:large_cactus_seedling"] = "default:large_cactus_seedling",
-  ["default:sand_with_kelp"] = "default:sand_with_kelp",
-}
-
-
-function isCreative(player_name)
+local function is_creative(player_name)
   local player_privs = minetest.get_player_privs(player_name)
   return player_privs.creative or minetest.is_creative_enabled(player_name)
 end
 
-function add_to_inventory(user, item_name)
+local function add_to_inventory(user, item_name)
     local inv = user:get_inventory()
     local stack_max = ItemStack(item_name):get_stack_max()
     for i = 1, inv:get_size('main') do
@@ -72,6 +29,16 @@ function add_to_inventory(user, item_name)
     end
     return false
 end
+
+-- API
+
+function basalt_fertilizer.add_vegetation(new_vegetation)
+  for item, value in pairs(new_vegetation) do
+    vegetation[item] = value
+  end
+end
+
+dofile(modpath .. "/mods.lua")
 
 -- NODES
 
@@ -109,7 +76,7 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
     end
     local node = minetest.get_node(pointed_thing.under)
     if vegetation[node.name] and not itemstack:is_empty() and user then
-      if add_to_inventory(user, vegetation[node.name]) and not isCreative(user:get_player_name()) then
+      if add_to_inventory(user, vegetation[node.name]) and not is_creative(user:get_player_name()) then
         itemstack:take_item()
       end
     end
