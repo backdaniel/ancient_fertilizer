@@ -4,7 +4,7 @@ local S = minetest.get_translator("basalt_fertilizer")
 
 -- HELPERS
 
-local flora = {
+local vegetation = {
   ["default:grass_1"] = "default:grass_1",
   ["default:grass_2"] = "default:grass_1",
   ["default:grass_3"] = "default:grass_1",
@@ -108,8 +108,8 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
       return
     end
     local node = minetest.get_node(pointed_thing.under)
-    if flora[node.name] and not itemstack:is_empty() and user then
-      if add_to_inventory(user, flora[node.name]) and not isCreative(user:get_player_name()) then
+    if vegetation[node.name] and not itemstack:is_empty() and user then
+      if add_to_inventory(user, vegetation[node.name]) and not isCreative(user:get_player_name()) then
         itemstack:take_item()
       end
     end
