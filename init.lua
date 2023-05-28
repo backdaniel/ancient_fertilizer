@@ -36,6 +36,41 @@ local saplings = {
   ["default:emergent_jungle_sapling"] = minetest.get_modpath("default") .. "/schematics/emergent_jungle_tree.mts",
 }
 
+local flora = {
+  ["default:grass_1"] = "default:grass_1",
+  ["default:grass_2"] = "default:grass_1",
+  ["default:grass_3"] = "default:grass_1",
+  ["default:grass_4"] = "default:grass_1",
+  ["default:grass_5"] = "default:grass_1",
+  ["default:dry_grass_1"] = "default:dry_grass_1",
+  ["default:dry_grass_2"] = "default:dry_grass_1",
+  ["default:dry_grass_3"] = "default:dry_grass_1",
+  ["default:dry_grass_4"] = "default:dry_grass_1",
+  ["default:dry_grass_5"] = "default:dry_grass_1",
+  ["default:fern_1"] = "default:fern_1",
+  ["default:fern_2"] = "default:fern_1",
+  ["default:fern_3"] = "default:fern_1",
+  ["default:marram_grass_1"] = "default:marram_grass_1",
+  ["default:marram_grass_2"] = "default:marram_grass_1",
+  ["default:marram_grass_3"] = "default:marram_grass_1",
+  ["default:junglegrass"] = "default:junglegrass",
+  ["default:dry_shrub"] = "default:dry_shrub",
+  ["flowers:dandelion_white"] = "flowers:dandelion_white",
+  ["flowers:tulip_black"] = "flowers:tulip_black",
+  ["flowers:chrysanthemum_green"] = "flowers:chrysanthemum_green",
+  ["flowers:dandelion_yellow"] = "flowers:dandelion_yellow",
+  ["flowers:tulip"] = "flowers:tulip",
+  ["flowers:geranium"] = "flowers:geranium",
+  ["flowers:viola"] = "flowers:viola",
+  ["flowers:rose"] = "flowers:rose",
+  ["flowers:mushroom_red"] = "flowers:mushroom_red",
+  ["flowers:mushroom_brown"] = "flowers:mushroom_brown",
+  ["flowers:waterlily"] = "flowers:waterlily",
+  ["flowers:waterlily_waving"] = "flowers:waterlily",
+  ["farming:cotton_wild"] = "farming:cotton_wild",
+}
+
+
 function isCreative(player_name)
   local player_privs = minetest.get_player_privs(player_name)
   return player_privs.creative or minetest.is_creative_enabled(player_name)
@@ -76,21 +111,31 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
     if pointed_thing.type ~= "node" then
       return
     end
-    
+
     local node = minetest.get_node(pointed_thing.under)
+
     if crops[node.name] and not itemstack:is_empty() and user then
       minetest.set_node(pointed_thing.under, {name = crops[node.name]})
       if not isCreative(user:get_player_name()) then
         itemstack:take_item()
       end
-    end
-    if saplings[node.name] and not itemstack:is_empty() and user then
-      minetest.remove_node(pointed_thing.under)
-      minetest.place_schematic({x=pointed_thing.under.x, y=pointed_thing.under.y-1, z=pointed_thing.under.z}, saplings[node.name], "random", {}, false, "place_center_x,place_center_z")
+    elseif flora[node.name] and not itemstack:is_empty() and user then
+      local inv = user:get_inventory()
+      local stack_max = ItemStack(flora[node.name]):get_stack_max()
+      local stack_size = inv:get_stack('main', inv:get_stack_index(flora[node.name])):get_count()
+      if (inv:room_for_item('main', ItemStack(flora[node.name])) or stack_size < stack_max) then
+        inv:add_item('main', ItemStack(flora[node.name]))
+        if not isCreative(user:get_player_name()) then
+          itemstack:take_item()
+        end
+      end
+    elseif saplings[node.name] and default.can_grow(pos) not itemstack:is_empty() and user then
+      default.grow_sapling({x=pointed_thing.under.x, y=pointed_thing.under.y, z=pointed_thing.under.z})
       if not isCreative(user:get_player_name()) then
         itemstack:take_item()
       end
     end
+
     return itemstack
   end
 })
