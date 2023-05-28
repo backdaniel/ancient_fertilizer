@@ -4,38 +4,6 @@ local S = minetest.get_translator("basalt_fertilizer")
 
 -- HELPERS
 
-local crops = {
-  ["farming:seed_wheat"] = "farming:wheat_1",
-  ["farming:wheat_1"] = "farming:wheat_2",
-  ["farming:wheat_2"] = "farming:wheat_3",
-  ["farming:wheat_3"] = "farming:wheat_4",
-  ["farming:wheat_4"] = "farming:wheat_5",
-  ["farming:wheat_5"] = "farming:wheat_6",
-  ["farming:wheat_6"] = "farming:wheat_7",
-  ["farming:wheat_7"] = "farming:wheat_8",
-  ["farming:seed_cotton"] = "farming:cotton_1",
-  ["farming:cotton_1"] = "farming:cotton_2",
-  ["farming:cotton_2"] = "farming:cotton_3",
-  ["farming:cotton_3"] = "farming:cotton_4",
-  ["farming:cotton_4"] = "farming:cotton_5",
-  ["farming:cotton_5"] = "farming:cotton_6",
-  ["farming:cotton_6"] = "farming:cotton_7",
-  ["farming:cotton_7"] = "farming:cotton_8",
-}
-
-local saplings = {
-  ["default:sapling"] = minetest.get_modpath("default") .. "/schematics/apple_tree.mts",
-  ["default:junglesapling"] = minetest.get_modpath("default") .. "/schematics/jungle_tree.mts",
-  ["default:pine_sapling"] = minetest.get_modpath("default") .. "/schematics/pine_tree.mts",
-  ["default:acacia_sapling"] = minetest.get_modpath("default") .. "/schematics/acacia_tree.mts",
-  ["default:aspen_sapling"] = minetest.get_modpath("default") .. "/schematics/aspen_tree.mts",
-  ["default:bush_sapling"] = minetest.get_modpath("default") .. "/schematics/bush.mts",
-  ["default:acacia_bush_sapling"] = minetest.get_modpath("default") .. "/schematics/acacia_bush.mts",
-  ["default:pine_bush_sapling"] = minetest.get_modpath("default") .. "/schematics/pine_bush.mts",
-  ["default:blueberry_bush_sapling"] = minetest.get_modpath("default") .. "/schematics/blueberry_bush.mts",
-  ["default:emergent_jungle_sapling"] = minetest.get_modpath("default") .. "/schematics/emergent_jungle_tree.mts",
-}
-
 local flora = {
   ["default:grass_1"] = "default:grass_1",
   ["default:grass_2"] = "default:grass_1",
@@ -68,6 +36,18 @@ local flora = {
   ["flowers:waterlily"] = "flowers:waterlily",
   ["flowers:waterlily_waving"] = "flowers:waterlily",
   ["farming:cotton_wild"] = "farming:cotton_wild",
+  ["default:sapling"] = "default:sapling",
+  ["default:junglesapling"] = "default:junglesapling",
+  ["default:pine_sapling"] = "default:pine_sapling",
+  ["default:acacia_sapling"] = "default:acacia_sapling",
+  ["default:aspen_sapling"] = "default:aspen_sapling",
+  ["default:bush_sapling"] = "default:bush_sapling",
+  ["default:acacia_bush_sapling"] = "default:acacia_bush_sapling",
+  ["default:pine_bush_sapling"] = "default:pine_bush_sapling",
+  ["default:blueberry_bush_sapling"] = "default:blueberry_bush_sapling",
+  ["default:emergent_jungle_sapling"] = "default:emergent_jungle_sapling",
+  ["default:large_cactus_seedling"] = "default:large_cactus_seedling",
+  ["default:sand_with_kelp"] = "default:sand_with_kelp",
 }
 
 
@@ -81,7 +61,6 @@ function add_to_inventory(user, item_name)
     local stack_max = ItemStack(item_name):get_stack_max()
     for i = 1, inv:get_size('main') do
         local stack = inv:get_stack('main', i)
-
         if stack:get_name() == item_name and stack:get_count() < stack_max then
             inv:add_item('main', ItemStack(item_name))
             return true
@@ -128,25 +107,12 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
     if pointed_thing.type ~= "node" then
       return
     end
-
     local node = minetest.get_node(pointed_thing.under)
-
-    if crops[node.name] and not itemstack:is_empty() and user then
-      minetest.set_node(pointed_thing.under, {name = crops[node.name]})
-      if not isCreative(user:get_player_name()) then
-        itemstack:take_item()
-      end
-    elseif flora[node.name] and not itemstack:is_empty() and user then
+    if flora[node.name] and not itemstack:is_empty() and user then
       if add_to_inventory(user, flora[node.name]) and not isCreative(user:get_player_name()) then
         itemstack:take_item()
       end
-    elseif saplings[node.name] and default.can_grow({x=pointed_thing.under.x, y=pointed_thing.under.y, z=pointed_thing.under.z}) and not itemstack:is_empty() and user then
-      default.grow_sapling({x=pointed_thing.under.x, y=pointed_thing.under.y, z=pointed_thing.under.z})
-      if not isCreative(user:get_player_name()) then
-        itemstack:take_item()
-      end
     end
-
     return itemstack
   end
 })
