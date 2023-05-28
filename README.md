@@ -12,5 +12,5 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Wild Cotton can now be picked and placed in survival, and is renewable.
 
 ## Distinctions
-- Doesn't work on water or water vegetation.
+- Doesn't work on water vegetation.
 - Won't spawn patches of flora on soil.
