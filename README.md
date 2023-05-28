@@ -9,7 +9,7 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Supports sapling schematic generation.
 - Supports flora duplication.
 - Waterlily is now renewable.
-- Wild Cotton can now be picked and placed in survival, and is renewable.
+- Wild Cotton can now be placed in survival, and is renewable.
 
 ## Distinctions
 - Doesn't work on water vegetation.
