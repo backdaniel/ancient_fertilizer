@@ -4,7 +4,9 @@ local modpath = minetest.get_modpath("basalt_fertilizer")
 
 local S = minetest.get_translator("basalt_fertilizer")
 
-local vegetation = {}
+local vegetation = {
+  -- ["example_node"] = "example_drop",
+}
 
 -- HELPERS
 
