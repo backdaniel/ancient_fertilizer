@@ -76,6 +76,23 @@ function isCreative(player_name)
   return player_privs.creative or minetest.is_creative_enabled(player_name)
 end
 
+function add_to_inventory(user, item_name)
+    local inv = user:get_inventory()
+    local stack_max = ItemStack(item_name):get_stack_max()
+    for i = 1, inv:get_size('main') do
+        local stack = inv:get_stack('main', i)
+
+        if stack:get_name() == item_name and stack:get_count() < stack_max then
+            inv:add_item('main', ItemStack(item_name))
+            return true
+        end
+    end
+    if inv:room_for_item('main', ItemStack(item_name)) then
+        inv:add_item('main', ItemStack(item_name))
+        return true
+    end
+    return false
+end
 
 -- NODES
 
@@ -120,14 +137,8 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
         itemstack:take_item()
       end
     elseif flora[node.name] and not itemstack:is_empty() and user then
-      local inv = user:get_inventory()
-      local stack_max = ItemStack(flora[node.name]):get_stack_max()
-      local stack_size = inv:get_stack('main', inv:get_stack_index(flora[node.name])):get_count()
-      if (inv:room_for_item('main', ItemStack(flora[node.name])) or stack_size < stack_max) then
-        inv:add_item('main', ItemStack(flora[node.name]))
-        if not isCreative(user:get_player_name()) then
-          itemstack:take_item()
-        end
+      if add_to_inventory(user, flora[node.name]) and not isCreative(user:get_player_name()) then
+        itemstack:take_item()
       end
     elseif saplings[node.name] and default.can_grow(pos) and not itemstack:is_empty() and user then
       default.grow_sapling({x=pointed_thing.under.x, y=pointed_thing.under.y, z=pointed_thing.under.z})
