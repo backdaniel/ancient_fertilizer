@@ -4,7 +4,7 @@ In this mod, basalt, one of the most common rocks on Earth, abundant in key nutr
 Created for [minetest_game](https://content.minetest.net/packages/Minetest/minetest_game/), with gameplay balance in mind. Textures from [too_many_stones](https://content.minetest.net/packages/JoeEnderman/too_many_stones/) (modified).
 
 ## Features
-- Basalt starts at y = 0 (sea level) to y = -31000.
+- Basalt starts at y = 0 (sea level) and down.
 - Supports flora duplication (including flowers).
 - Supports sapling duplication (including Large Cactus Seedling).
 - Kelp is now renewable.
