@@ -1,16 +1,17 @@
 # Basalt + Fertilizer
-In this mod, basalt, one of the most common rocks on Earth, abundant in key nutrients like potassium, phosphorus, and calcium, is crushed and used to enrich the soil, leading to crops, flowers, cactus, papyrus, saplings and grass growth.
+In this mod, basalt, one of the most common rocks on Earth, abundant in key nutrients like potassium, phosphorus, and calcium, is crushed and used to enrich the soil, leading to flowers, saplings and grass growth.
 
 Created for [minetest_game](https://content.minetest.net/packages/Minetest/minetest_game/), with gameplay balance in mind. Textures from [too_many_stones](https://content.minetest.net/packages/JoeEnderman/too_many_stones/) (modified).
 
 ## Features
 - Basalt starts at y = 0 (sea level).
-- Supports crop growth.
-- Supports sapling schematic generation.
-- Supports flora duplication.
+- Supports flora duplication (including flowers).
+- Supports sapling duplication (including Large Cactus Seedling).
+- Works on Kelp (considered vegetation).
 - Waterlily is now renewable.
 - Wild Cotton can now be placed in survival, and is renewable.
 
 ## Distinctions
-- Doesn't work on water vegetation.
 - Won't spawn patches of flora on soil.
+- Wont't "grow" saplings or crops.
+- Simple and extensible.
