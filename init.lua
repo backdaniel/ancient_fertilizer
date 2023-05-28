@@ -129,7 +129,7 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
           itemstack:take_item()
         end
       end
-    elseif saplings[node.name] and default.can_grow(pos) not itemstack:is_empty() and user then
+    elseif saplings[node.name] and default.can_grow(pos) and not itemstack:is_empty() and user then
       default.grow_sapling({x=pointed_thing.under.x, y=pointed_thing.under.y, z=pointed_thing.under.z})
       if not isCreative(user:get_player_name()) then
         itemstack:take_item()
