@@ -30,6 +30,9 @@ if minetest.get_modpath("default") then
     ["default:emergent_jungle_sapling"] = "default:emergent_jungle_sapling",
     ["default:large_cactus_seedling"] = "default:large_cactus_seedling",
     ["default:sand_with_kelp"] = "default:sand_with_kelp",
+    ["default:coral_cyan"] = "default:coral_cyan",
+    ["default:coral_green"] = "default:coral_green",
+    ["default:coral_pink"] = "default:coral_pink",
   })
 end
 
