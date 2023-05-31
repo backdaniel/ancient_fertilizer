@@ -106,16 +106,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-  output = "basalt_fertilizer:fertilizer 4",
-  recipe = {{"basalt_fertilizer:basalt"}}
-})
-
-minetest.register_craft({
-  output = "basalt_fertilizer:basalt",
-  recipe = {
-    {"basalt_fertilizer:fertilizer", "basalt_fertilizer:fertilizer"},
-    {"basalt_fertilizer:fertilizer", "basalt_fertilizer:fertilizer"},
-  }
+  type = "cooking",
+  output = "basalt_fertilizer:fertilizer",
+  recipe = "basalt_fertilizer:basalt"
 })
 
 -- STAIRS
@@ -163,8 +156,8 @@ minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
   wherein         = {"default:stone"},
-  clust_scarcity  = 16 * 16 * 16,
-  clust_size      = 5,
+  clust_scarcity  = 17 * 17 * 17,
+  clust_size      = 7,
   y_max           = 0,
   y_min           = -31000,
   noise_threshold = 0.0,
