@@ -155,7 +155,7 @@ minetest.register_ore({
   noise_params    = {
     offset = 0.5,
     scale = 0.2,
-    spread = {x = 9, y = 5, z = 9},
+    spread = {x = 19, y = 3, z = 19},
     seed = 111,
     octaves = 1,
     persist = 0.0
