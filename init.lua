@@ -28,23 +28,7 @@ end
 
 -- API
 
-local vegetation = {
-  -- ["example_node1"] = "example_drop1",
-  -- ["example_node2"] = "example_drop2",
-  -- ["example_node3"] = "example_drop3",
-}
-
-function basalt_fertilizer.add_vegetation(new_vegetation)
-  for item, value in pairs(new_vegetation) do
-    vegetation[item] = value
-  end
-end
-
-function basalt_fertilizer.get_vegetation(node_name)
-  return vegetation[node_name]
-end
-
-dofile(modpath .. "/mods.lua")
+dofile(modpath .. "/api.lua")
 
 -- NODES
 
