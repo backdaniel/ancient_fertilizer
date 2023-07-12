@@ -1,3 +1,17 @@
+local vegetation = {
+  -- ["example_node"] = "example_drop",
+}
+
+function basalt_fertilizer.add_vegetation(new_vegetation)
+  for item, value in pairs(new_vegetation) do
+    vegetation[item] = value
+  end
+end
+
+function basalt_fertilizer.get_vegetation(node_name)
+  return vegetation[node_name]
+end
+
 if minetest.get_modpath("default") then
   basalt_fertilizer.add_vegetation({
     ["default:grass_1"] = "default:grass_1",
