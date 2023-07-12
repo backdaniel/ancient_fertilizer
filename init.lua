@@ -144,18 +144,18 @@ end
 -- MAPGEN
 
 minetest.register_ore({
-  ore_type        = "blob",
+  ore_type        = "stratum",
   ore             = "basalt_fertilizer:basalt",
   wherein         = {"default:stone"},
   clust_scarcity  = 18 * 18 * 18,
   clust_size      = 8,
-  y_max           = 0,
+  y_max           = 100,
   y_min           = -31000,
   noise_threshold = 0.0,
   noise_params    = {
     offset = 0.5,
     scale = 0.2,
-    spread = {x = 19, y = 3, z = 19},
+    spread = {x = 5, y = 5, z = 5},
     seed = 111,
     octaves = 1,
     persist = 0.0
