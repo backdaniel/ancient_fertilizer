@@ -1,12 +1,6 @@
 basalt_fertilizer = {}
-
 local modpath = minetest.get_modpath("basalt_fertilizer")
-
 local S = minetest.get_translator("basalt_fertilizer")
-
-local vegetation = {
-  -- ["example_node"] = "example_drop",
-}
 
 -- HELPERS
 
@@ -34,10 +28,20 @@ end
 
 -- API
 
+local vegetation = {
+  -- ["example_node1"] = "example_drop1",
+  -- ["example_node2"] = "example_drop2",
+  -- ["example_node3"] = "example_drop3",
+}
+
 function basalt_fertilizer.add_vegetation(new_vegetation)
   for item, value in pairs(new_vegetation) do
     vegetation[item] = value
   end
+end
+
+function basalt_fertilizer.get_vegetation(node_name)
+  return vegetation[node_name]
 end
 
 dofile(modpath .. "/mods.lua")
@@ -77,8 +81,9 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
       return
     end
     local node = minetest.get_node(pointed_thing.under)
-    if vegetation[node.name] and not itemstack:is_empty() and user then
-      if add_to_inventory(user, vegetation[node.name]) and not is_creative(user:get_player_name()) then
+    local vegetation = basalt_fertilizer.get_vegetation(node.name)
+    if vegetation and not itemstack:is_empty() and user then
+      if add_to_inventory(user, vegetation) and not is_creative(user:get_player_name()) then
         itemstack:take_item()
       end
     end
