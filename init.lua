@@ -144,14 +144,16 @@ end
 -- MAPGEN
 
 local replace = {
-  "default:stone", 
-  "default:stone_with_coal", 
-  "default:stone_with_iron", 
-  "default:stone_with_copper", 
-  "default:stone_with_tin", 
-  "default:stone_with_gold", 
-  "default:stone_with_diamond", 
-  "default:stone_with_mese", 
+  "default:stone",
+  "default:stone_with_coal",
+  "default:stone_with_iron",
+  "default:stone_with_copper",
+  "default:stone_with_tin",
+  "default:stone_with_gold",
+  "default:stone_with_diamond",
+  "default:stone_with_mese",
+  "default:silver_sand",
+  "default:gravel",
 }
 
 minetest.register_ore({
@@ -172,6 +174,17 @@ minetest.register_ore({
     persist = 0.0
   },
 })
+
+local replace = {
+  "default:stone",
+  "default:stone_with_coal",
+  "default:stone_with_iron",
+  "default:stone_with_copper",
+  "default:stone_with_tin",
+  "default:stone_with_gold",
+  "default:stone_with_diamond",
+  "default:stone_with_mese",
+}
 
 minetest.register_ore({
   ore_type        = "blob",
