@@ -143,12 +143,23 @@ end
 
 -- MAPGEN
 
+local replace = {
+  "default:stone", 
+  "default:stone_with_coal", 
+  "default:stone_with_iron", 
+  "default:stone_with_copper", 
+  "default:stone_with_tin", 
+  "default:stone_with_gold", 
+  "default:stone_with_diamond", 
+  "default:stone_with_mese", 
+}
+
 minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
-  wherein         = {"default:stone"},
+  wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
-  clust_size      = 8,
+  clust_size      = 5,
   y_max           = 0,
   y_min           = -31000,
   noise_threshold = 0.0,
@@ -165,7 +176,7 @@ minetest.register_ore({
 minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
-  wherein         = {"default:stone"},
+  wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
   clust_size      = 4,
   y_max           = 0,
@@ -184,7 +195,7 @@ minetest.register_ore({
 minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
-  wherein         = {"default:stone"},
+  wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
   clust_size      = 3,
   y_max           = 0,
