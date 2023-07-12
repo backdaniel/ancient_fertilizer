@@ -1,6 +1,12 @@
 basalt_fertilizer = {}
+
 local modpath = minetest.get_modpath("basalt_fertilizer")
+
 local S = minetest.get_translator("basalt_fertilizer")
+
+-- API
+
+dofile(modpath .. "/api.lua")
 
 -- HELPERS
 
@@ -25,10 +31,6 @@ local function add_to_inventory(user, item_name)
   end
   return false
 end
-
--- API
-
-dofile(modpath .. "/api.lua")
 
 -- NODES
 
