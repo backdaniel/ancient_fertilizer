@@ -152,8 +152,6 @@ local replace = {
   "default:stone_with_gold",
   "default:stone_with_diamond",
   "default:stone_with_mese",
-  "default:silver_sand",
-  "default:gravel",
 }
 
 minetest.register_ore({
@@ -161,7 +159,7 @@ minetest.register_ore({
   ore             = "basalt_fertilizer:basalt",
   wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
-  clust_size      = 8,
+  clust_size      = 4,
   y_max           = 0,
   y_min           = -31000,
   noise_threshold = 0.0,
@@ -169,22 +167,11 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 111,
+    seed = 333,
     octaves = 1,
     persist = 0.0
   },
 })
-
-local replace = {
-  "default:stone",
-  "default:stone_with_coal",
-  "default:stone_with_iron",
-  "default:stone_with_copper",
-  "default:stone_with_tin",
-  "default:stone_with_gold",
-  "default:stone_with_diamond",
-  "default:stone_with_mese",
-}
 
 minetest.register_ore({
   ore_type        = "blob",
@@ -205,12 +192,25 @@ minetest.register_ore({
   },
 })
 
+local replace = {
+  "default:stone",
+  "default:stone_with_coal",
+  "default:stone_with_iron",
+  "default:stone_with_copper",
+  "default:stone_with_tin",
+  "default:stone_with_gold",
+  "default:stone_with_diamond",
+  "default:stone_with_mese",
+  "default:silver_sand",
+  "default:gravel",
+}
+
 minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
   wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
-  clust_size      = 4,
+  clust_size      = 8,
   y_max           = 0,
   y_min           = -31000,
   noise_threshold = 0.0,
@@ -218,7 +218,7 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 333,
+    seed = 111,
     octaves = 1,
     persist = 0.0
   },
