@@ -167,7 +167,7 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 333,
+    seed = 111,
     octaves = 1,
     persist = 0.0
   },
@@ -192,18 +192,8 @@ minetest.register_ore({
   },
 })
 
-local replace = {
-  "default:stone",
-  "default:stone_with_coal",
-  "default:stone_with_iron",
-  "default:stone_with_copper",
-  "default:stone_with_tin",
-  "default:stone_with_gold",
-  "default:stone_with_diamond",
-  "default:stone_with_mese",
-  "default:silver_sand",
-  "default:gravel",
-}
+table.insert(replace, "default:silver_sand")
+table.insert(replace, "default:gravel")
 
 minetest.register_ore({
   ore_type        = "blob",
@@ -218,7 +208,7 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 111,
+    seed = 333,
     octaves = 1,
     persist = 0.0
   },
