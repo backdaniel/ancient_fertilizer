@@ -154,6 +154,15 @@ local replace = {
   "default:stone_with_mese",
 }
 
+-- MOREORES
+
+if minetest.get_modpath("moreores") then
+  table.insert(replace, "moreores:mineral_silver")
+  table.insert(replace, "moreores:mineral_mithril")
+end
+
+-- MAPGEN
+
 minetest.register_ore({
   ore_type        = "blob",
   ore             = "basalt_fertilizer:basalt",
