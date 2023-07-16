@@ -32,17 +32,6 @@ if minetest.get_modpath("default") then
     ["default:marram_grass_3"] = "default:marram_grass_1",
     ["default:junglegrass"] = "default:junglegrass",
     ["default:dry_shrub"] = "default:dry_shrub",
-    ["default:sapling"] = "default:sapling",
-    ["default:junglesapling"] = "default:junglesapling",
-    ["default:pine_sapling"] = "default:pine_sapling",
-    ["default:acacia_sapling"] = "default:acacia_sapling",
-    ["default:aspen_sapling"] = "default:aspen_sapling",
-    ["default:bush_sapling"] = "default:bush_sapling",
-    ["default:acacia_bush_sapling"] = "default:acacia_bush_sapling",
-    ["default:pine_bush_sapling"] = "default:pine_bush_sapling",
-    ["default:blueberry_bush_sapling"] = "default:blueberry_bush_sapling",
-    ["default:emergent_jungle_sapling"] = "default:emergent_jungle_sapling",
-    ["default:large_cactus_seedling"] = "default:large_cactus_seedling",
     ["default:sand_with_kelp"] = "default:sand_with_kelp",
     ["default:coral_cyan"] = "default:coral_cyan",
     ["default:coral_green"] = "default:coral_green",
@@ -70,5 +59,14 @@ end
 if minetest.get_modpath("farming") then
   basalt_fertilizer.add_vegetation({
     ["farming:cotton_wild"] = "farming:cotton_wild",
+  })
+end
+
+if minetest.get_modpath("bakedclay") then
+  basalt_fertilizer.add_vegetation({
+    ["bakedclay:lazarus"] = "bakedclay:lazarus",
+    ["bakedclay:thistle"] = "bakedclay:thistle",
+    ["bakedclay:delphinium"] = "bakedclay:delphinium",
+    ["bakedclay:mannagrass"] = "bakedclay:mannagrass",
   })
 end
