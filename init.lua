@@ -169,7 +169,7 @@ minetest.register_ore({
   wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
   clust_size      = 4,
-  y_max           = 0,
+  y_max           = -255,
   y_min           = -31000,
   noise_threshold = 0.0,
   noise_params    = {
@@ -188,7 +188,7 @@ minetest.register_ore({
   wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
   clust_size      = 5,
-  y_max           = 0,
+  y_max           = -255,
   y_min           = -31000,
   noise_threshold = 0.0,
   noise_params    = {
@@ -210,7 +210,7 @@ minetest.register_ore({
   wherein         = replace,
   clust_scarcity  = 22 * 22 * 22,
   clust_size      = 8,
-  y_max           = 0,
+  y_max           = -255,
   y_min           = -31000,
   noise_threshold = 0.0,
   noise_params    = {
