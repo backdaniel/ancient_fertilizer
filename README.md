@@ -9,6 +9,7 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Kelp and Coral (rooted) are now renewable.
 - Waterlily is now renewable.
 - Wild Cotton can now be placed in survival, and is renewable.
+- Basalt Brick has a cracked variation.
 
 ## Distinctions
 - Duplicates vegetation.
