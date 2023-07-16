@@ -16,11 +16,16 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Won't "grow" saplings or crops.
 - Simple and extensible.
 
-Q: What not to duplicate?
-A: Anything that doesn't naturally spawn in the world.
+## FAQ
 
-Q: Why does basalt have a cobbled variation?
-A: Design consistency, sedimentary rocks (like sandstone) drop themselves, and igneous rocks (like stone) drop cobble.
+### What shouldn't be duplicated?
 
-Q: Why can't the bricks make walls?
-A: Design consistency, only cobble variants make walls.
+Anything that doesn't naturally spawn in the world.
+
+### Why does basalt have a cobbled variation?
+
+Sedimentary rocks (like sandstone) drop themselves, and igneous rocks (like stone) drop cobble.
+
+### Why can't the bricks make walls?
+
+Design consistency, only cobble variants make walls.
