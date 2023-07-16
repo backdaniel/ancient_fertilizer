@@ -32,7 +32,7 @@ local function add_to_inventory(user, item_name)
   return false
 end
 
--- NODES
+-- DEFINITIONS
 
 minetest.register_node("basalt_fertilizer:basalt", {
   description = S("Basalt"),
@@ -102,10 +102,7 @@ minetest.register_craft({
   recipe = "basalt_fertilizer:basalt"
 })
 
--- STAIRS
-
 if minetest.get_modpath("stairs") then
-
   stairs.register_stair_and_slab(
     "basalt",
     "basalt_fertilizer:basalt",
@@ -116,7 +113,6 @@ if minetest.get_modpath("stairs") then
     default.node_sound_stone_defaults(),
     true
   )
-
   stairs.register_stair_and_slab(
     "basalt_brick",
     "basalt_fertilizer:basalt_brick",
@@ -127,7 +123,6 @@ if minetest.get_modpath("stairs") then
     default.node_sound_stone_defaults(),
     false
   )
-
   stairs.register_stair_and_slab(
     "basalt_block",
     "basalt_fertilizer:basalt_block",
@@ -138,7 +133,6 @@ if minetest.get_modpath("stairs") then
     default.node_sound_stone_defaults(),
     true
   )
-
 end
 
 -- MAPGEN
@@ -154,14 +148,10 @@ local replace = {
   "default:stone_with_mese",
 }
 
--- MOREORES
-
 if minetest.get_modpath("moreores") then
   table.insert(replace, "moreores:mineral_silver")
   table.insert(replace, "moreores:mineral_mithril")
 end
-
--- MAPGEN
 
 minetest.register_ore({
   ore_type        = "blob",
