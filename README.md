@@ -19,4 +19,3 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 
 ## Design Choices
 - Anything that doesn't spawn in the world can't be duplicated.
-- Only cobbled variants make walls.
