@@ -166,7 +166,7 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 6268567392468524,
+    seed = 349638245,
     octaves = 1,
     persist = 0.0
   },
@@ -185,7 +185,7 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 9434676728743889,
+    seed = 625867536,
     octaves = 1,
     persist = 0.0
   },
@@ -207,7 +207,7 @@ minetest.register_ore({
     offset = 0.5,
     scale = 0.2,
     spread = {x = 5, y = 5, z = 5},
-    seed = 2233775765689542,
+    seed = 266558522,
     octaves = 1,
     persist = 0.0
   },
