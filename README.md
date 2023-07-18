@@ -17,4 +17,4 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Simple and extensible.
 
 ## Design Choices
-- Anything that doesn't spawn in the world can't be duplicated.
+- Anything that doesn't generate in the world can't be duplicated.
