@@ -2,6 +2,7 @@
 Basalt=
 Basalt Block=
 Basalt Brick=
+Cracked Basalt Brick=
 Mineral Fertilizer=
 Basalt Stair=
 Basalt Slab=
@@ -9,3 +10,5 @@ Basalt Brick Stair=
 Basalt Brick Slab=
 Basalt Block Stair=
 Basalt Block Slab=
+Cracked Basalt Block Stair=
+Cracked Basalt Block Slab=
