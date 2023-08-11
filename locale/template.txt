@@ -1,9 +1,12 @@
 # textdomain: basalt_fertilizer
 
+Mineral Fertilizer=
+
 Basalt=
 Basalt Block=
 Basalt Brick=
 Cracked Basalt Brick=
+
 Basalt Stair=
 Basalt Slab=
 Basalt Brick Stair=
@@ -17,6 +20,7 @@ Ancient Basalt=
 Ancient Basalt Block=
 Ancient Basalt Brick=
 Cracked Ancient Basalt Brick=
+
 Ancient Basalt Stair=
 Ancient Basalt Slab=
 Ancient Basalt Brick Stair=
@@ -25,5 +29,3 @@ Ancient Basalt Block Stair=
 Ancient Basalt Block Slab=
 Cracked Ancient Basalt Block Stair=
 Cracked Ancient Basalt Block Slab=
-
-Mineral Fertilizer=
