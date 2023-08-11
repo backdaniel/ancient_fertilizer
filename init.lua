@@ -59,6 +59,16 @@ minetest.register_node("basalt_fertilizer:basalt_brick", {
   sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("basalt_fertilizer:basalt_cracked_brick", {
+  description = S("Cracked Basalt Brick"),
+  paramtype2 = "facedir",
+  place_param2 = 0,
+  tiles = {"node_basalt_cracked_brick.png"},
+  is_ground_content = false,
+  groups = {cracky = 2, stone = 1},
+  sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_craftitem("basalt_fertilizer:fertilizer", {
   description = S("Mineral Fertilizer"),
   inventory_image = "item_fertilizer.png",
@@ -80,6 +90,15 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
 -- CRAFTS
 
 minetest.register_craft({
+  output = "basalt_fertilizer:basalt_block 9",
+  recipe = {
+    {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
+    {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
+    {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
+  }
+})
+
+minetest.register_craft({
   output = "basalt_fertilizer:basalt_brick 4",
   recipe = {
     {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
@@ -88,12 +107,9 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-  output = "basalt_fertilizer:basalt_block 9",
-  recipe = {
-    {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
-    {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
-    {"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
-  }
+  type = "cooking",
+  output = "basalt_fertilizer:basalt_cracked_brick",
+  recipe = "basalt_fertilizer:basalt_brick"
 })
 
 minetest.register_craft({
@@ -114,6 +130,16 @@ if minetest.get_modpath("stairs") then
     true
   )
   stairs.register_stair_and_slab(
+    "basalt_block",
+    "basalt_fertilizer:basalt_block",
+    {cracky = 2},
+    {"node_basalt_block.png"},
+    S("Basalt Block Stair"),
+    S("Basalt Block Slab"),
+    default.node_sound_stone_defaults(),
+    true
+  )
+  stairs.register_stair_and_slab(
     "basalt_brick",
     "basalt_fertilizer:basalt_brick",
     {cracky = 2},
@@ -124,14 +150,14 @@ if minetest.get_modpath("stairs") then
     false
   )
   stairs.register_stair_and_slab(
-    "basalt_block",
-    "basalt_fertilizer:basalt_block",
+    "basalt_cracked_brick",
+    "basalt_fertilizer:basalt_cracked_brick",
     {cracky = 2},
-    {"node_basalt_block.png"},
-    S("Basalt Block Stair"),
-    S("Basalt Block Slab"),
+    {"node_basalt_cracked_brick.png"},
+    S("Cracked Basalt Brick Stair"),
+    S("Cracked Basalt Brick Slab"),
     default.node_sound_stone_defaults(),
-    true
+    false
   )
 end
 
