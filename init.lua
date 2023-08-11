@@ -35,13 +35,13 @@ end
 
 -- DEFINITIONS
 
-local other_basalt = {
+local other_basalt_mods = {
   "too_many_stones",
   "amethyst_new",
 }
 
 local stone_name = "Basalt"
-for _, mod_name in ipairs(other_basalt) do
+for _, mod_name in ipairs(other_basalt_mods) do
   if minetest.get_modpath(mod_name) then
     stone_name = "Ancient Basalt"
     break
