@@ -35,9 +35,17 @@ end
 
 -- DEFINITIONS
 
+local other_basalt = {
+  "too_many_stones",
+  "amethyst_new",
+}
+
 local stone_name = "Basalt"
-if minetest.get_modpath("too_many_stones") then
-  stone_name = "Ancient Basalt"
+for _, mod_name in ipairs(other_basalt) do
+  if minetest.get_modpath(mod_name) then
+    stone_name = "Ancient Basalt"
+    break
+  end
 end
 
 minetest.register_node("basalt_fertilizer:basalt", {
