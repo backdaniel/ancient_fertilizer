@@ -34,15 +34,20 @@ end
 
 -- DEFINITIONS
 
+local stone_name = "Basalt"
+if minetest.get_modpath("too_many_stones") then
+  stone_name = "Ancient Basalt"
+end
+
 minetest.register_node("basalt_fertilizer:basalt", {
-  description = S("Ancient Basalt"),
+  description = S(stone_name),
   tiles = {"node_basalt.png"},
   groups = {cracky = 3, stone = 1},
   sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_node("basalt_fertilizer:basalt_block", {
-  description = S("Ancient Basalt Block"),
+  description = S(stone_name .. " Block"),
   tiles = {"node_basalt_block.png"},
   is_ground_content = false,
   groups = {cracky = 2, stone = 1},
@@ -50,7 +55,7 @@ minetest.register_node("basalt_fertilizer:basalt_block", {
 })
 
 minetest.register_node("basalt_fertilizer:basalt_brick", {
-  description = S("Ancient Basalt Brick"),
+  description = S(stone_name .. " Brick"),
   paramtype2 = "facedir",
   place_param2 = 0,
   tiles = {"node_basalt_brick.png"},
@@ -60,7 +65,7 @@ minetest.register_node("basalt_fertilizer:basalt_brick", {
 })
 
 minetest.register_node("basalt_fertilizer:basalt_cracked_brick", {
-  description = S("Cracked Ancient Basalt Brick"),
+  description = S("Cracked " .. stone_name .. " Brick"),
   paramtype2 = "facedir",
   place_param2 = 0,
   tiles = {"node_basalt_cracked_brick.png"},
@@ -124,8 +129,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt",
     {cracky = 3},
     {"node_basalt.png"},
-    S("Ancient Basalt Stair"),
-    S("Ancient Basalt Slab"),
+    S(stone_name .. " Stair"),
+    S(stone_name .. " Slab"),
     default.node_sound_stone_defaults(),
     true
   )
@@ -134,8 +139,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_block",
     {cracky = 2},
     {"node_basalt_block.png"},
-    S("Ancient Basalt Block Stair"),
-    S("Ancient Basalt Block Slab"),
+    S(stone_name .. " Block Stair"),
+    S(stone_name .. " Block Slab"),
     default.node_sound_stone_defaults(),
     true
   )
@@ -144,8 +149,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_brick",
     {cracky = 2},
     {"node_basalt_brick.png"},
-    S("Ancient Basalt Brick Stair"),
-    S("Ancient Basalt Brick Slab"),
+    S(stone_name .. " Brick Stair"),
+    S(stone_name .. " Brick Slab"),
     default.node_sound_stone_defaults(),
     false
   )
@@ -154,8 +159,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_cracked_brick",
     {cracky = 2},
     {"node_basalt_cracked_brick.png"},
-    S("Cracked Ancient Basalt Brick Stair"),
-    S("Cracked Ancient Basalt Brick Slab"),
+    S("Cracked " .. stone_name .. " Brick Stair"),
+    S("Cracked " .. stone_name .. " Brick Slab"),
     default.node_sound_stone_defaults(),
     false
   )
