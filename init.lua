@@ -142,6 +142,8 @@ if minetest.get_modpath("stairs") then
     S("@1 Slab", stone_name),
     default.node_sound_stone_defaults(),
     true
+    S("Inner @1 Stair", stone_name),
+    S("Outer @1 Stair", stone_name),
   )
   stairs.register_stair_and_slab(
     "basalt_block",
@@ -152,6 +154,8 @@ if minetest.get_modpath("stairs") then
     S("@1 Block Slab", stone_name),
     default.node_sound_stone_defaults(),
     true
+    S("Inner @1 Block Stair", stone_name),
+    S("Outer @1 Block Stair", stone_name),
   )
   stairs.register_stair_and_slab(
     "basalt_brick",
@@ -162,6 +166,8 @@ if minetest.get_modpath("stairs") then
     S("@1 Brick Slab", stone_name),
     default.node_sound_stone_defaults(),
     false
+    S("Inner @1 Brick Stair", stone_name),
+    S("Outer @1 Brick Stair", stone_name),
   )
   stairs.register_stair_and_slab(
     "basalt_cracked_brick",
@@ -172,6 +178,8 @@ if minetest.get_modpath("stairs") then
     S("Cracked @1 Brick Slab", stone_name),
     default.node_sound_stone_defaults(),
     false
+    S("Inner Cracked @1 Brick Stair", stone_name),
+    S("Outer Cracked @1 Brick Stair", stone_name),
   )
 end
 
