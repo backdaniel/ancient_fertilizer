@@ -1,8 +1,8 @@
 basalt_fertilizer = {}
 
-local modpath = minetest.get_modpath("basalt_fertilizer")
+local modpath = minetest.get_modpath(minetest.get_current_modname())
 
-local S = minetest.get_translator("basalt_fertilizer")
+local S = minetest.get_translator(minetest.get_current_modname())
 
 -- API
 
