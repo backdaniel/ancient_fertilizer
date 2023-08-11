@@ -1,14 +1,14 @@
 # textdomain: basalt_fertilizer
-Basalt=
-Basalt Block=
-Basalt Brick=
-Cracked Basalt Brick=
+Ancient Basalt=
+Ancient Basalt Block=
+Ancient Basalt Brick=
+Cracked Ancient Basalt Brick=
 Mineral Fertilizer=
-Basalt Stair=
-Basalt Slab=
-Basalt Brick Stair=
-Basalt Brick Slab=
-Basalt Block Stair=
-Basalt Block Slab=
-Cracked Basalt Block Stair=
-Cracked Basalt Block Slab=
+Ancient Basalt Stair=
+Ancient Basalt Slab=
+Ancient Basalt Brick Stair=
+Ancient Basalt Brick Slab=
+Ancient Basalt Block Stair=
+Ancient Basalt Block Slab=
+Cracked Ancient Basalt Block Stair=
+Cracked Ancient Basalt Block Slab=
