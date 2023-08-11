@@ -35,14 +35,14 @@ end
 -- DEFINITIONS
 
 minetest.register_node("basalt_fertilizer:basalt", {
-  description = S("Basalt"),
+  description = S("Ancient Basalt"),
   tiles = {"node_basalt.png"},
   groups = {cracky = 3, stone = 1},
   sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_node("basalt_fertilizer:basalt_block", {
-  description = S("Basalt Block"),
+  description = S("Ancient Basalt Block"),
   tiles = {"node_basalt_block.png"},
   is_ground_content = false,
   groups = {cracky = 2, stone = 1},
@@ -50,7 +50,7 @@ minetest.register_node("basalt_fertilizer:basalt_block", {
 })
 
 minetest.register_node("basalt_fertilizer:basalt_brick", {
-  description = S("Basalt Brick"),
+  description = S("Ancient Basalt Brick"),
   paramtype2 = "facedir",
   place_param2 = 0,
   tiles = {"node_basalt_brick.png"},
@@ -60,7 +60,7 @@ minetest.register_node("basalt_fertilizer:basalt_brick", {
 })
 
 minetest.register_node("basalt_fertilizer:basalt_cracked_brick", {
-  description = S("Cracked Basalt Brick"),
+  description = S("Cracked Ancient Basalt Brick"),
   paramtype2 = "facedir",
   place_param2 = 0,
   tiles = {"node_basalt_cracked_brick.png"},
@@ -124,8 +124,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt",
     {cracky = 3},
     {"node_basalt.png"},
-    S("Basalt Stair"),
-    S("Basalt Slab"),
+    S("Ancient Basalt Stair"),
+    S("Ancient Basalt Slab"),
     default.node_sound_stone_defaults(),
     true
   )
@@ -134,8 +134,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_block",
     {cracky = 2},
     {"node_basalt_block.png"},
-    S("Basalt Block Stair"),
-    S("Basalt Block Slab"),
+    S("Ancient Basalt Block Stair"),
+    S("Ancient Basalt Block Slab"),
     default.node_sound_stone_defaults(),
     true
   )
@@ -144,8 +144,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_brick",
     {cracky = 2},
     {"node_basalt_brick.png"},
-    S("Basalt Brick Stair"),
-    S("Basalt Brick Slab"),
+    S("Ancient Basalt Brick Stair"),
+    S("Ancient Basalt Brick Slab"),
     default.node_sound_stone_defaults(),
     false
   )
@@ -154,8 +154,8 @@ if minetest.get_modpath("stairs") then
     "basalt_fertilizer:basalt_cracked_brick",
     {cracky = 2},
     {"node_basalt_cracked_brick.png"},
-    S("Cracked Basalt Brick Stair"),
-    S("Cracked Basalt Brick Slab"),
+    S("Cracked Ancient Basalt Brick Stair"),
+    S("Cracked Ancient Basalt Brick Slab"),
     default.node_sound_stone_defaults(),
     false
   )
