@@ -3,18 +3,28 @@
 Mineral Fertilizer=
 
 Basalt=
-Basalt Block=
-Basalt Brick=
-Cracked Basalt Brick=
-
 Basalt Stair=
 Basalt Slab=
-Basalt Brick Stair=
-Basalt Brick Slab=
+Inner Basalt Stair=
+Outer Basalt Stair=
+
+Basalt Block=
 Basalt Block Stair=
 Basalt Block Slab=
-Cracked Basalt Block Stair=
-Cracked Basalt Block Slab=
+Inner Basalt Block Stair=
+Outer Basalt Block Stair=
+
+Basalt Brick=
+Basalt Brick Stair=
+Basalt Brick Slab=
+Inner Basalt Brick Stair=
+Outer Basalt Brick Stair=
+
+Cracked Basalt Brick=
+Cracked Basalt Brick Stair=
+Cracked Basalt Brick Slab=
+Inner Cracked Basalt Brick Stair=
+Outer Cracked Basalt Brick Stair=
 
 Ancient Basalt=
 Ancient Basalt Block=
@@ -27,5 +37,5 @@ Ancient Basalt Brick Stair=
 Ancient Basalt Brick Slab=
 Ancient Basalt Block Stair=
 Ancient Basalt Block Slab=
-Cracked Ancient Basalt Block Stair=
-Cracked Ancient Basalt Block Slab=
+Cracked Ancient Basalt Brick Stair=
+Cracked Ancient Basalt Brick Slab=
