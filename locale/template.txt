@@ -27,15 +27,25 @@ Inner Cracked Basalt Brick Stair=
 Outer Cracked Basalt Brick Stair=
 
 Ancient Basalt=
-Ancient Basalt Block=
-Ancient Basalt Brick=
-Cracked Ancient Basalt Brick=
-
 Ancient Basalt Stair=
 Ancient Basalt Slab=
-Ancient Basalt Brick Stair=
-Ancient Basalt Brick Slab=
+Inner Ancient Basalt Stair=
+Outer Ancient Basalt Stair=
+
+Ancient Basalt Block=
 Ancient Basalt Block Stair=
 Ancient Basalt Block Slab=
+Inner Ancient Basalt Block Stair=
+Outer Ancient Basalt Block Stair=
+
+Ancient Basalt Brick=
+Ancient Basalt Brick Stair=
+Ancient Basalt Brick Slab=
+Inner Ancient Basalt Brick Stair=
+Outer Ancient Basalt Brick Stair=
+
+Cracked Ancient Basalt Brick=
 Cracked Ancient Basalt Brick Stair=
 Cracked Ancient Basalt Brick Slab=
+Inner Cracked Ancient Basalt Brick Stair=
+Outer Cracked Ancient Basalt Brick Stair=
