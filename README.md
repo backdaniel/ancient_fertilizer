@@ -13,7 +13,7 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Duplicates vegetation.
 - Won't spawn patches of flora on soil.
 - Won't "grow" saplings or crops.
-- Simple and extensible, just add to "group:can_duplicate".
+- Simple and extensible, just add to `group:can_duplicate`.
 
 ## Design Choices
-- Duplicates any "group:flora", "group:mushroom" and "group:sapling" by default.
+- Duplicates any `group:flora`, `group:mushroom` and `group:sapling` by default.
