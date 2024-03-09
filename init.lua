@@ -94,7 +94,7 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
 	description = S("Ancient Fertilizer"),
 	inventory_image = "item_fertilizer.png",
 	on_use = function(itemstack, user, pointed_thing)
-		if itemstack.is_empty() or not user or pointed_thing.type ~= "node" then
+		if itemstack:is_empty() or not user or pointed_thing.type ~= "node" then
 			return
 		end
 		local node = minetest.get_node(pointed_thing.under)
