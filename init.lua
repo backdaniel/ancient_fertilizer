@@ -140,7 +140,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "cooking",
-	output = "basalt_fertilizer:fertilizer",
+	output = "basalt_fertilizer:fertilizer 4",
 	recipe = "basalt_fertilizer:basalt_cracked"
 })
 
