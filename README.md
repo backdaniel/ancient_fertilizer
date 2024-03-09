@@ -8,7 +8,7 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Good for farming flowers for dye.
 - New Ancient Basalt texture.
 - New Cracked Brick variation.
-- Selectively pick different variations of a grass.
+- Selectively pick different variations of a type of grass.
 
 ## Distinctions
 - Duplicates vegetation.
