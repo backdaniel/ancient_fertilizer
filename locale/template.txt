@@ -1,51 +1,32 @@
 # textdomain: basalt_fertilizer
 
-Mineral Fertilizer=
-
-Basalt=
-Basalt Stair=
-Basalt Slab=
-Inner Basalt Stair=
-Outer Basalt Stair=
-
-Basalt Block=
-Basalt Block Stair=
-Basalt Block Slab=
-Inner Basalt Block Stair=
-Outer Basalt Block Stair=
-
-Basalt Brick=
-Basalt Brick Stair=
-Basalt Brick Slab=
-Inner Basalt Brick Stair=
-Outer Basalt Brick Stair=
-
-Cracked Basalt Brick=
-Cracked Basalt Brick Stair=
-Cracked Basalt Brick Slab=
-Inner Cracked Basalt Brick Stair=
-Outer Cracked Basalt Brick Stair=
-
 Ancient Basalt=
+Cobbled Ancient Basalt=
+Ancient Basalt Brick=
+Ancient Basalt Block=
+Cracked Ancient Basalt=
+Cracked Ancient Basalt Brick=
+Ancient Fertilizer=
+
 Ancient Basalt Stair=
 Ancient Basalt Slab=
 Inner Ancient Basalt Stair=
 Outer Ancient Basalt Stair=
-
-Ancient Basalt Block=
+Cobbled Ancient Basalt Stair=
+Cobbled Ancient Basalt Slab=
+Inner Cobbled Ancient Basalt Stair=
+Outer Cobbled Ancient Basalt Stair=
 Ancient Basalt Block Stair=
 Ancient Basalt Block Slab=
 Inner Ancient Basalt Block Stair=
 Outer Ancient Basalt Block Stair=
-
-Ancient Basalt Brick=
 Ancient Basalt Brick Stair=
 Ancient Basalt Brick Slab=
 Inner Ancient Basalt Brick Stair=
 Outer Ancient Basalt Brick Stair=
-
-Cracked Ancient Basalt Brick=
 Cracked Ancient Basalt Brick Stair=
 Cracked Ancient Basalt Brick Slab=
 Inner Cracked Ancient Basalt Brick Stair=
 Outer Cracked Ancient Basalt Brick Stair=
+
+Cobbled Ancient Basalt Wall=
