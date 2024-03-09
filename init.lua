@@ -8,10 +8,10 @@ local S = minetest.get_translator(modname)
 -- HELPERS
 
 local function can_duplicate(item_name)
-	return minetest.get_item_group(item_name, "group:flora")
-		or minetest.get_item_group(item_name, "group:mushroom")
-		or minetest.get_item_group(item_name, "group:sapling")
-		or minetest.get_item_group(item_name, "group:can_duplicate")
+	return minetest.get_item_group(item_name, "group:flora") > 0
+		or minetest.get_item_group(item_name, "group:mushroom") > 0
+		or minetest.get_item_group(item_name, "group:sapling") > 0
+		or minetest.get_item_group(item_name, "group:can_duplicate") > 0
 end
 
 local function add_to_inventory(user, item_name)
