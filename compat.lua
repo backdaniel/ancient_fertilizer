@@ -1,15 +1,3 @@
-if minetest.get_modpath("mcl_core") then
-	ancient_fertilizer.set_default_groups({
-		"flower"
-	})
-elseif minetest.get_modpath("default") then
-	ancient_fertilizer.set_default_groups({
-		"flora",
-		"mushroom",
-		"sapling"
-	})
-end
-
 if minetest.get_modpath("default") then
 	ancient_fertilizer.override_drop("default:grass_2", "default:grass_1")
 	ancient_fertilizer.override_drop("default:grass_3", "default:grass_1")

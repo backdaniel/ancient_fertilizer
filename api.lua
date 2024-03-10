@@ -1,16 +1,11 @@
-local default_groups = {can_duplicate = true}
+local can_duplicate = {}
 local overrides = {}
 local disallowed = {}
 
--- to add support for custom nodes simply add them to "group:can_duplicate"
-
-function ancient_fertilizer.set_default_groups(group_list)
-	-- this should be set per game
-	-- groups that have some kind of "spreading" abm or known renewable vegetation
-    default_groups = {can_duplicate = true}
-    for _, group in ipairs(group_list) do
-        default_groups[group] = true
-    end
+function ancient_fertilizer.add_node(node_name)
+	-- nodes you want to be able to duplicate
+	-- not necessary if already included in DEFAULT_GROUPS
+	can_duplicate[node_name] = true
 end
 
 function ancient_fertilizer.override_drop(node_name, drop_name)
@@ -29,15 +24,17 @@ function ancient_fertilizer.disallow_node(node_name)
 	disallowed[node_name] = true
 end
 
-function ancient_fertilizer.is_disallowed(node_name)
-	return disallowed[node_name] == true
-end
-
 function ancient_fertilizer.should_affect(node_name)
-    for group, _ in pairs(default_groups) do
-        if minetest.get_item_group(node_name, group) > 0 then
-            return true and not ancient_fertilizer.is_disallowed(node_name)
-        end
-    end
-    return false
+	if disallowed[node_name] == true then
+		return false
+	end
+	if can_duplicate[node_name] == true then
+		return true
+	end
+	for group, _ in pairs(ancient_fertilizer.DEFAULT_GROUPS) do
+		if minetest.get_item_group(node_name, group) > 0 then
+			return true
+		end
+	end
+	return false
 end

@@ -7,7 +7,7 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Ancient Stone starts at y = -255 (underground) and below.
 - Good for farming flowers for dye.
 - New Ancient Stone texture and cracked variations.
-- Simple and extensible, just add to `group:can_duplicate`.
+- Simple and extensible.
 
 ## Distinctions
 - Duplicates vegetation.
@@ -15,5 +15,5 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Won't "grow" saplings or crops.
 
 ## Design Choices
-- Should try to support vegetation from other mods without tweaks.
+- Try to support plants from other mods without tweaks.
 - Should only duplicate renewable resources.
