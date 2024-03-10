@@ -1,7 +1,7 @@
 # Ancient Fertilizer
 In this mod, Ancient Stone, abundant in key nutrients like potassium, phosphorus, and calcium, is crushed and used to enrich the soil, leading to flowers, grass, mushroom and sapling duplication.
 
-Created for [minetest_game](https://content.minetest.net/packages/Minetest/minetest_game/), with gameplay balance in mind. Textures from [too_many_stones](https://content.minetest.net/packages/JoeEnderman/too_many_stones/) (modified).
+Created for [minetest_game](https://content.minetest.net/packages/Minetest/minetest_game/), with gameplay balance in mind. Working on support for MineClone2.
 
 ## Features
 - Ancient Stone starts at y = -255 (underground) and below.
@@ -15,5 +15,5 @@ Created for [minetest_game](https://content.minetest.net/packages/Minetest/minet
 - Won't "grow" saplings or crops.
 
 ## Design Choices
-- Duplicates any `group:flora`, `group:mushroom` and `group:sapling` by default.
+- Should try to support vegetation from other mods without tweaks.
 - Should only duplicate renewable resources.

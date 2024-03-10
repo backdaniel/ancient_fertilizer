@@ -11,15 +11,6 @@ dofile(ancient_fertilizer.MODPATH .. "/compat.lua")
 
 -- HELPERS
 
-local function can_duplicate(node_name)
-	return not ancient_fertilizer.is_disallowed(node_name) and (
-		minetest.get_item_group(node_name, "flora") > 0 or
-		minetest.get_item_group(node_name, "mushroom") > 0 or
-		minetest.get_item_group(node_name, "sapling") > 0 or
-		minetest.get_item_group(node_name, "can_duplicate") > 0
-	)
-end
-
 local function add_to_inventory(user, item_name)
 	local inv = user:get_inventory()
 	local stack_max = ItemStack(item_name):get_stack_max()
@@ -104,8 +95,8 @@ minetest.register_craftitem("ancient_fertilizer:fertilizer", {
 			return
 		end
 		local node = minetest.get_node(pointed_thing.under)
-		if can_duplicate(node.name) then
-			local drop = ancient_fertilizer.get_drop(node.name) or node.name
+		if ancient_fertilizer.should_affect(node.name) then
+			local drop = ancient_fertilizer.get_drop(node.name)
 			if add_to_inventory(user, drop) and not is_creative(user:get_player_name()) then
 				itemstack:take_item()
 			end
