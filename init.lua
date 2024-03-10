@@ -1,17 +1,23 @@
-basalt_fertilizer = {}
+ancient_fertilizer = {}
 
-local modname = minetest.get_current_modname()
-local modpath = minetest.get_modpath(modname)
+ancient_fertilizer.MODNAME = minetest.get_current_modname()
+ancient_fertilizer.MODPATH = minetest.get_modpath(ancient_fertilizer.MODNAME)
 
-local S = minetest.get_translator(modname)
+local S = minetest.get_translator(ancient_fertilizer.MODNAME)
+
+dofile(ancient_fertilizer.MODPATH .. "/alias.lua")
+dofile(ancient_fertilizer.MODPATH .. "/api.lua")
+dofile(ancient_fertilizer.MODPATH .. "/compat.lua")
 
 -- HELPERS
 
-local function can_duplicate(item_name)
-	return minetest.get_item_group(item_name, "flora") > 0
-		or minetest.get_item_group(item_name, "mushroom") > 0
-		or minetest.get_item_group(item_name, "sapling") > 0
-		or minetest.get_item_group(item_name, "can_duplicate") > 0
+local function can_duplicate(node_name)
+	return not ancient_fertilizer.is_disallowed(node_name) and (
+		minetest.get_item_group(node_name, "flora") > 0 or
+		minetest.get_item_group(node_name, "mushroom") > 0 or
+		minetest.get_item_group(node_name, "sapling") > 0 or
+		minetest.get_item_group(node_name, "can_duplicate") > 0
+	)
 end
 
 local function add_to_inventory(user, item_name)
@@ -38,68 +44,69 @@ end
 
 -- DEFINITIONS
 
-minetest.register_node("basalt_fertilizer:basalt", {
-	description = S("Ancient Basalt"),
-	tiles = {"node_basalt.png"},
+minetest.register_node("ancient_fertilizer:ancient_stone", {
+	description = S("Ancient Stone"),
+	tiles = {"ancient_fertilizer_ancient_stone.png"},
 	groups = {cracky = 3, stone = 1},
-	drop = "basalt_fertilizer:basalt_cobble",
+	drop = "ancient_fertilizer:ancient_cobble",
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("basalt_fertilizer:basalt_cobble", {
-	description = S("Cobbled Ancient Basalt"),
-	tiles = {"node_basalt_cobble.png"},
+minetest.register_node("ancient_fertilizer:ancient_cobble", {
+	description = S("Ancient Cobblestone"),
+	tiles = {"ancient_fertilizer_ancient_cobble.png"},
 	is_ground_content = false,
 	groups = {cracky = 3, stone = 2},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("basalt_fertilizer:basalt_brick", {
-	description = S("Ancient Basalt Brick"),
+minetest.register_node("ancient_fertilizer:ancient_stonebrick", {
+	description = S("Ancient Stone Brick"),
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"node_basalt_brick.png"},
+	tiles = {"ancient_fertilizer_ancient_stone_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("basalt_fertilizer:basalt_block", {
-	description = S("Ancient Basalt Block"),
-	tiles = {"node_basalt_block.png"},
+minetest.register_node("ancient_fertilizer:ancient_stone_block", {
+	description = S("Ancient Stone Block"),
+	tiles = {"ancient_fertilizer_ancient_stone_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("basalt_fertilizer:basalt_cracked", {
-	description = S("Cracked Ancient Basalt"),
-	tiles = {"node_basalt_cracked.png"},
+minetest.register_node("ancient_fertilizer:ancient_stone_cracked", {
+	description = S("Cracked Ancient Stone"),
+	tiles = {"ancient_fertilizer_ancient_stone_cracked.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_node("basalt_fertilizer:basalt_cracked_brick", {
-	description = S("Cracked Ancient Basalt Brick"),
+minetest.register_node("ancient_fertilizer:ancient_stonebrick_cracked", {
+	description = S("Cracked Ancient Stone Brick"),
 	paramtype2 = "facedir",
 	place_param2 = 0,
-	tiles = {"node_basalt_cracked_brick.png"},
+	tiles = {"ancient_fertilizer_ancient_stone_brick_cracked.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craftitem("basalt_fertilizer:fertilizer", {
+minetest.register_craftitem("ancient_fertilizer:fertilizer", {
 	description = S("Ancient Fertilizer"),
-	inventory_image = "item_fertilizer.png",
+	inventory_image = "ancient_fertilizer_fertilizer.png",
 	on_use = function(itemstack, user, pointed_thing)
 		if itemstack:is_empty() or not user or pointed_thing.type ~= "node" then
 			return
 		end
 		local node = minetest.get_node(pointed_thing.under)
 		if can_duplicate(node.name) then
-			if add_to_inventory(user, node.name) and not is_creative(user:get_player_name()) then
+			local drop = ancient_fertilizer.get_drop(node.name) or node.name
+			if add_to_inventory(user, drop) and not is_creative(user:get_player_name()) then
 				itemstack:take_item()
 			end
 		end
@@ -110,108 +117,108 @@ minetest.register_craftitem("basalt_fertilizer:fertilizer", {
 -- CRAFTS
 
 minetest.register_craft({
-	output = "basalt_fertilizer:basalt_block 9",
+	output = "ancient_fertilizer:ancient_stone_block 9",
 	recipe = {
-		{"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
-		{"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
-		{"basalt_fertilizer:basalt", "basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
+		{"ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone"},
+		{"ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone"},
+		{"ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone"},
 	}
 })
 
 minetest.register_craft({
-	output = "basalt_fertilizer:basalt_brick 4",
+	output = "ancient_fertilizer:ancient_stonebrick 4",
 	recipe = {
-		{"basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
-		{"basalt_fertilizer:basalt", "basalt_fertilizer:basalt"},
+		{"ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone"},
+		{"ancient_fertilizer:ancient_stone", "ancient_fertilizer:ancient_stone"},
 	}
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "basalt_fertilizer:basalt",
-	recipe = "basalt_fertilizer:basalt_cobble"
+	output = "ancient_fertilizer:ancient_stone",
+	recipe = "ancient_fertilizer:ancient_cobble"
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "basalt_fertilizer:basalt_cracked",
-	recipe = "basalt_fertilizer:basalt"
+	output = "ancient_fertilizer:ancient_stone_cracked",
+	recipe = "ancient_fertilizer:ancient_stone"
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "basalt_fertilizer:fertilizer 4",
-	recipe = "basalt_fertilizer:basalt_cracked"
+	output = "ancient_fertilizer:fertilizer 4",
+	recipe = "ancient_fertilizer:ancient_stone_cracked"
 })
 
 minetest.register_craft({
 	type = "cooking",
-	output = "basalt_fertilizer:basalt_cracked_brick",
-	recipe = "basalt_fertilizer:basalt_brick"
+	output = "ancient_fertilizer:ancient_stonebrick_cracked",
+	recipe = "ancient_fertilizer:ancient_stonebrick"
 })
 
 -- STAIRS
 
 if minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab(
-		"ancient_basalt",
-		"basalt_fertilizer:basalt",
+		"ancient_stone",
+		"ancient_fertilizer:ancient_stone",
 		{cracky = 3},
-		{"node_basalt.png"},
-		S("Ancient Basalt Stair"),
-		S("Ancient Basalt Slab"),
+		{"ancient_fertilizer_ancient_stone.png"},
+		S("Ancient Stone Stair"),
+		S("Ancient Stone Slab"),
 		default.node_sound_stone_defaults(),
 		true,
-		S("Inner Ancient Basalt Stair"),
-		S("Outer Ancient Basalt Stair")
+		S("Inner Ancient Stone Stair"),
+		S("Outer Ancient Stone Stair")
 	)
 	stairs.register_stair_and_slab(
-		"ancient_basalt_cobble",
-		"basalt_fertilizer:basalt_cobble",
+		"ancient_cobble",
+		"ancient_fertilizer:ancient_cobble",
 		{cracky = 3},
-		{"node_basalt_cobble.png"},
-		S("Cobbled Ancient Basalt Stair"),
-		S("Cobbled Ancient Basalt Slab"),
+		{"ancient_fertilizer_ancient_cobble.png"},
+		S("Ancient Cobblestone Stair"),
+		S("Ancient Cobblestone Slab"),
 		default.node_sound_stone_defaults(),
 		true,
-		S("Inner Cobbled Ancient Basalt Stair"),
-		S("Outer Cobbled Ancient Basalt Stair")
+		S("Inner Ancient Cobblestone Stair"),
+		S("Outer Ancient Cobblestone Stair")
 	)
 	stairs.register_stair_and_slab(
-		"ancient_basalt_block",
-		"basalt_fertilizer:basalt_block",
+		"ancient_stone_block",
+		"ancient_fertilizer:ancient_stone_block",
 		{cracky = 2},
-		{"node_basalt_block.png"},
-		S("Ancient Basalt Block Stair"),
-		S("Ancient Basalt Block Slab"),
+		{"ancient_fertilizer_ancient_stone_block.png"},
+		S("Ancient Stone Block Stair"),
+		S("Ancient Stone Block Slab"),
 		default.node_sound_stone_defaults(),
 		true,
-		S("Inner Ancient Basalt Block Stair"),
-		S("Outer Ancient Basalt Block Stair")
+		S("Inner Ancient Stone Block Stair"),
+		S("Outer Ancient Stone Block Stair")
 	)
 	stairs.register_stair_and_slab(
-		"ancient_basalt_brick",
-		"basalt_fertilizer:basalt_brick",
+		"ancient_stonebrick",
+		"ancient_fertilizer:ancient_stonebrick",
 		{cracky = 2},
-		{"node_basalt_brick.png"},
-		S("Ancient Basalt Brick Stair"),
-		S("Ancient Basalt Brick Slab"),
+		{"ancient_fertilizer_ancient_stone_brick.png"},
+		S("Ancient Stone Brick Stair"),
+		S("Ancient Stone Brick Slab"),
 		default.node_sound_stone_defaults(),
 		false,
-		S("Inner Ancient Basalt Brick Stair"),
-		S("Outer Ancient Basalt Brick Stair")
+		S("Inner Ancient Stone Brick Stair"),
+		S("Outer Ancient Stone Brick Stair")
 	)
 	stairs.register_stair_and_slab(
-		"ancient_basalt_cracked_brick",
-		"basalt_fertilizer:basalt_cracked_brick",
+		"ancient_stonebrick_cracked",
+		"ancient_fertilizer:ancient_stonebrick_cracked",
 		{cracky = 2},
-		{"node_basalt_cracked_brick.png"},
-		S("Cracked Ancient Basalt Brick Stair"),
-		S("Cracked Ancient Basalt Brick Slab"),
+		{"ancient_fertilizer_ancient_stone_brick_cracked.png"},
+		S("Cracked Ancient Stone Brick Stair"),
+		S("Cracked Ancient Stone Brick Slab"),
 		default.node_sound_stone_defaults(),
 		false,
-		S("Inner Cracked Ancient Basalt Brick Stair"),
-		S("Outer Cracked Ancient Basalt Brick Stair")
+		S("Inner Cracked Ancient Stone Brick Stair"),
+		S("Outer Cracked Ancient Stone Brick Stair")
 	)
 end
 
@@ -219,10 +226,10 @@ end
 
 if minetest.get_modpath("walls") then
 	walls.register(
-		"basalt_fertilizer:ancient_basalt_cobble_wall",
-		S("Cobbled Ancient Basalt Wall"),
-		{"node_basalt_cobble.png"},
-		"basalt_fertilizer:basalt_cobble",
+		":walls:ancientcobble",
+		S("Ancient Cobblestone Wall"),
+		{"ancient_fertilizer_ancient_cobble.png"},
+		"ancient_fertilizer:ancient_cobble",
 		default.node_sound_stone_defaults()
 	)
 end
@@ -247,7 +254,7 @@ end
 
 minetest.register_ore({
 	ore_type        = "blob",
-	ore             = "basalt_fertilizer:basalt",
+	ore             = "ancient_fertilizer:ancient_stone",
 	wherein         = replace,
 	clust_scarcity  = 23 * 23 * 23,
 	clust_size      = 4,
@@ -266,7 +273,7 @@ minetest.register_ore({
 
 minetest.register_ore({
 	ore_type        = "blob",
-	ore             = "basalt_fertilizer:basalt",
+	ore             = "ancient_fertilizer:ancient_stone",
 	wherein         = replace,
 	clust_scarcity  = 23 * 23 * 23,
 	clust_size      = 5,
@@ -288,7 +295,7 @@ table.insert(replace, "default:gravel")
 
 minetest.register_ore({
 	ore_type        = "blob",
-	ore             = "basalt_fertilizer:basalt",
+	ore             = "ancient_fertilizer:ancient_stone",
 	wherein         = replace,
 	clust_scarcity  = 23 * 23 * 23,
 	clust_size      = 8,
