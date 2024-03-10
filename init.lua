@@ -6,9 +6,9 @@ ancient_fertilizer.MODPATH = minetest.get_modpath(ancient_fertilizer.MODNAME)
 local S = minetest.get_translator(ancient_fertilizer.MODNAME)
 
 dofile(ancient_fertilizer.MODPATH .. "/alias.lua")
-dofile(ancient_fertilizer.MODPATH .. "/default.lua")
+dofile(ancient_fertilizer.MODPATH .. "/compat_game.lua")
 dofile(ancient_fertilizer.MODPATH .. "/api.lua")
-dofile(ancient_fertilizer.MODPATH .. "/compat.lua")
+dofile(ancient_fertilizer.MODPATH .. "/compat_mods.lua")
 
 -- HELPERS
 
