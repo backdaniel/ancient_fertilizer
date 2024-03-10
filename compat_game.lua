@@ -3,6 +3,7 @@ ancient_fertilizer.DEFAULT_GROUPS = {}
 if minetest.get_modpath("mcl_core") then
 	ancient_fertilizer.DEFAULT_GROUPS = {
 		flower = true
+		mushroom = true
 	}
 elseif minetest.get_modpath("default") then
 	ancient_fertilizer.DEFAULT_GROUPS = {
