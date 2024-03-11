@@ -1,13 +1,14 @@
 # textdomain: ancient_fertilizer
 
+Ancient Fertilizer=
+Adds ancient fertilizer, sourced from ancient stone in the underground, useful for farming flowers if you need dye for colored nodes, complements bonemeal.=
+
 Ancient Stone=
 Ancient Cobblestone=
 Ancient Stone Brick=
 Ancient Stone Block=
 Cracked Ancient Stone=
 Cracked Ancient Stone Brick=
-
-Ancient Fertilizer=
 
 Ancient Stone Stair=
 Ancient Stone Slab=
