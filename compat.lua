@@ -1,6 +1,3 @@
-ancient_fertilizer.Y_MAX = nil
-
-
 if minetest.get_modpath("default") then
 	ancient_fertilizer.add_node("default:large_cactus_seedling")
 	ancient_fertilizer.add_node("default:sand_with_kelp")
