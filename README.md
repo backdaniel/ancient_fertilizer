@@ -4,15 +4,23 @@ In this mod, Ancient Stone, abundant in key nutrients like potassium, phosphorus
 Created for [minetest_game](https://content.minetest.net/packages/Minetest/minetest_game/), with gameplay balance in mind. Added support for [mineclone2](https://content.minetest.net/packages/Wuzzy/mineclone2/).
 
 ## Features
-- Ancient Stone starts at y = -255 (underground) and below.
-- Good for farming flowers for dye.
-- New Ancient Stone texture and cracked variations.
+- Ancient Fertilizer duplicates vegetation.
+- Explore the underground in search of Ancient Stone.
+- New stone type and cracked variations.
 - Simple and extensible.
 
+### Minetest Game
+- Ancient Stone appears at y = -255 (underground) and below.
+- Wild Cotton is now obtainable on survival.
+
+### MineClone2
+- Ancient Stone appears at y = 0 (sea level) and below.
+
 ## Distinctions
-- Duplicates vegetation.
 - Won't spawn patches of flora on soil.
 - Won't "grow" saplings or crops.
+- Good for farming flowers for dye.
 
 ## Design Choices
 - Try to support plants from other mods without tweaks.
+- Animals such as corals shouldn't be duplicated.
