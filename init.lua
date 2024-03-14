@@ -2,12 +2,6 @@ ancient_fertilizer = {}
 
 ancient_fertilizer.MODNAME = minetest.get_current_modname()
 ancient_fertilizer.MODPATH = minetest.get_modpath(ancient_fertilizer.MODNAME)
-ancient_fertilizer.DEFAULT_GROUPS = {
-	flower = true,
-	flora = true,
-	mushroom = true,
-	sapling = true
-}
 
 local S = minetest.get_translator(ancient_fertilizer.MODNAME)
 
@@ -19,25 +13,27 @@ dofile(ancient_fertilizer.MODPATH .. "/compat.lua")
 
 local function add_to_inventory(user, item_name)
 	local inv = user:get_inventory()
-	local stack_max = ItemStack(item_name):get_stack_max()
-	for i = 1, inv:get_size('main') do
-		local stack = inv:get_stack('main', i)
-		if stack:get_name() == item_name and stack:get_count() < stack_max then
-			inv:add_item('main', ItemStack(item_name))
-			return true
-		end
-	end
-	if inv:room_for_item('main', ItemStack(item_name)) then
-		inv:add_item('main', ItemStack(item_name))
-		return true
-	end
-	return false
+	local stack = ItemStack(item_name)
+	local leftover = inv:add_item('main', stack)
+	return leftover:is_empty()
 end
 
 local function is_creative(player_name)
-	local player_privs = minetest.get_player_privs(player_name)
-	return player_privs.creative or minetest.is_creative_enabled(player_name)
+	return minetest.check_player_privs(player_name, {creative=true})
+	    or minetest.is_creative_enabled(player_name)
 end
+
+-- SOUNDS
+
+local function get_stone_sounds()
+	if minetest.get_modpath("mcl_sounds") then
+			return mcl_sounds.node_sound_stone_defaults()
+	elseif minetest.get_modpath("default") then
+			return default.node_sound_stone_defaults()
+	end
+end
+
+local stone_sounds = get_stone_sounds()
 
 -- DEFINITIONS
 
@@ -46,7 +42,7 @@ minetest.register_node("ancient_fertilizer:ancient_stone", {
 	tiles = {"ancient_fertilizer_ancient_stone.png"},
 	groups = {cracky = 3, stone = 1},
 	drop = "ancient_fertilizer:ancient_cobble",
-	sounds = default.node_sound_stone_defaults(),
+	sounds = stone_sounds,
 })
 
 minetest.register_node("ancient_fertilizer:ancient_cobble", {
@@ -54,7 +50,7 @@ minetest.register_node("ancient_fertilizer:ancient_cobble", {
 	tiles = {"ancient_fertilizer_ancient_cobble.png"},
 	is_ground_content = false,
 	groups = {cracky = 3, stone = 2},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = stone_sounds,
 })
 
 minetest.register_node("ancient_fertilizer:ancient_stonebrick", {
@@ -64,7 +60,7 @@ minetest.register_node("ancient_fertilizer:ancient_stonebrick", {
 	tiles = {"ancient_fertilizer_ancient_stone_brick.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = stone_sounds,
 })
 
 minetest.register_node("ancient_fertilizer:ancient_stone_block", {
@@ -72,7 +68,7 @@ minetest.register_node("ancient_fertilizer:ancient_stone_block", {
 	tiles = {"ancient_fertilizer_ancient_stone_block.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = stone_sounds,
 })
 
 minetest.register_node("ancient_fertilizer:ancient_stone_cracked", {
@@ -80,7 +76,7 @@ minetest.register_node("ancient_fertilizer:ancient_stone_cracked", {
 	tiles = {"ancient_fertilizer_ancient_stone_cracked.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = stone_sounds,
 })
 
 minetest.register_node("ancient_fertilizer:ancient_stonebrick_cracked", {
@@ -90,7 +86,7 @@ minetest.register_node("ancient_fertilizer:ancient_stonebrick_cracked", {
 	tiles = {"ancient_fertilizer_ancient_stone_brick_cracked.png"},
 	is_ground_content = false,
 	groups = {cracky = 2, stone = 1},
-	sounds = default.node_sound_stone_defaults(),
+	sounds = stone_sounds,
 })
 
 minetest.register_craftitem("ancient_fertilizer:fertilizer", {
@@ -164,11 +160,12 @@ if minetest.get_modpath("stairs") then
 		{"ancient_fertilizer_ancient_stone.png"},
 		S("Ancient Stone Stair"),
 		S("Ancient Stone Slab"),
-		default.node_sound_stone_defaults(),
+		stone_sounds,
 		true,
 		S("Inner Ancient Stone Stair"),
 		S("Outer Ancient Stone Stair")
 	)
+
 	stairs.register_stair_and_slab(
 		"ancient_cobble",
 		"ancient_fertilizer:ancient_cobble",
@@ -176,11 +173,12 @@ if minetest.get_modpath("stairs") then
 		{"ancient_fertilizer_ancient_cobble.png"},
 		S("Ancient Cobblestone Stair"),
 		S("Ancient Cobblestone Slab"),
-		default.node_sound_stone_defaults(),
+		stone_sounds,
 		true,
 		S("Inner Ancient Cobblestone Stair"),
 		S("Outer Ancient Cobblestone Stair")
 	)
+
 	stairs.register_stair_and_slab(
 		"ancient_stone_block",
 		"ancient_fertilizer:ancient_stone_block",
@@ -188,11 +186,12 @@ if minetest.get_modpath("stairs") then
 		{"ancient_fertilizer_ancient_stone_block.png"},
 		S("Ancient Stone Block Stair"),
 		S("Ancient Stone Block Slab"),
-		default.node_sound_stone_defaults(),
+		stone_sounds,
 		true,
 		S("Inner Ancient Stone Block Stair"),
 		S("Outer Ancient Stone Block Stair")
 	)
+
 	stairs.register_stair_and_slab(
 		"ancient_stonebrick",
 		"ancient_fertilizer:ancient_stonebrick",
@@ -200,11 +199,12 @@ if minetest.get_modpath("stairs") then
 		{"ancient_fertilizer_ancient_stone_brick.png"},
 		S("Ancient Stone Brick Stair"),
 		S("Ancient Stone Brick Slab"),
-		default.node_sound_stone_defaults(),
+		stone_sounds,
 		false,
 		S("Inner Ancient Stone Brick Stair"),
 		S("Outer Ancient Stone Brick Stair")
 	)
+
 	stairs.register_stair_and_slab(
 		"ancient_stonebrick_cracked",
 		"ancient_fertilizer:ancient_stonebrick_cracked",
@@ -212,7 +212,7 @@ if minetest.get_modpath("stairs") then
 		{"ancient_fertilizer_ancient_stone_brick_cracked.png"},
 		S("Cracked Ancient Stone Brick Stair"),
 		S("Cracked Ancient Stone Brick Slab"),
-		default.node_sound_stone_defaults(),
+		stone_sounds,
 		false,
 		S("Inner Cracked Ancient Stone Brick Stair"),
 		S("Outer Cracked Ancient Stone Brick Stair")
@@ -227,84 +227,8 @@ if minetest.get_modpath("walls") then
 		S("Ancient Cobblestone Wall"),
 		{"ancient_fertilizer_ancient_cobble.png"},
 		"ancient_fertilizer:ancient_cobble",
-		default.node_sound_stone_defaults()
+		stone_sounds
 	)
 end
 
--- MAPGEN
-
-local replace = {
-	"default:stone",
-	"default:stone_with_coal",
-	"default:stone_with_iron",
-	"default:stone_with_copper",
-	"default:stone_with_tin",
-	"default:stone_with_gold",
-	"default:stone_with_diamond",
-	"default:stone_with_mese",
-}
-
-if minetest.get_modpath("moreores") then
-	table.insert(replace, "moreores:mineral_silver")
-	table.insert(replace, "moreores:mineral_mithril")
-end
-
-minetest.register_ore({
-	ore_type        = "blob",
-	ore             = "ancient_fertilizer:ancient_stone",
-	wherein         = replace,
-	clust_scarcity  = 23 * 23 * 23,
-	clust_size      = 4,
-	y_max           = -255,
-	y_min           = -31000,
-	noise_threshold = 0.0,
-	noise_params    = {
-		offset = 0.5,
-		scale = 0.2,
-		spread = {x = 5, y = 5, z = 5},
-		seed = 349638245,
-		octaves = 1,
-		persist = 0.0
-	},
-})
-
-minetest.register_ore({
-	ore_type        = "blob",
-	ore             = "ancient_fertilizer:ancient_stone",
-	wherein         = replace,
-	clust_scarcity  = 23 * 23 * 23,
-	clust_size      = 5,
-	y_max           = -255,
-	y_min           = -31000,
-	noise_threshold = 0.0,
-	noise_params    = {
-		offset = 0.5,
-		scale = 0.2,
-		spread = {x = 5, y = 5, z = 5},
-		seed = 625867536,
-		octaves = 1,
-		persist = 0.0
-	},
-})
-
-table.insert(replace, "default:silver_sand")
-table.insert(replace, "default:gravel")
-
-minetest.register_ore({
-	ore_type        = "blob",
-	ore             = "ancient_fertilizer:ancient_stone",
-	wherein         = replace,
-	clust_scarcity  = 23 * 23 * 23,
-	clust_size      = 8,
-	y_max           = -255,
-	y_min           = -31000,
-	noise_threshold = 0.0,
-	noise_params    = {
-		offset = 0.5,
-		scale = 0.2,
-		spread = {x = 5, y = 5, z = 5},
-		seed = 266558522,
-		octaves = 1,
-		persist = 0.0
-	},
-})
+dofile(ancient_fertilizer.MODPATH .. "/mapgen.lua")

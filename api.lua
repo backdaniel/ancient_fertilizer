@@ -3,10 +3,24 @@ local disallowed = {}
 local overrides = {}
 local variations = {}
 
-function ancient_fertilizer.add_node(node_name)
+local default_groups = {
+	flower = true,
+	flora = true,
+	mushroom = true,
+	sapling = true
+}
+
+local state_cache = {}
+local drops_cache = {}
+
+-- API: check compat.lua for examples
+
+function ancient_fertilizer.add_node(node_name, drop_name)
 	-- nodes you want to be able to duplicate
-	-- not necessary if already included in DEFAULT_GROUPS
+	-- not necessary if already included in default_groups
+	-- leaving drop_name empty makes it drop itself
 	can_duplicate[node_name] = true
+	overrides[node_name] = overrides[node_name] or drop_name
 end
 
 function ancient_fertilizer.disallow_node(node_name)
@@ -28,29 +42,76 @@ function ancient_fertilizer.has_variations(node_prefix, drop_name)
 	variations[node_prefix] = drop_name
 end
 
-function ancient_fertilizer.get_drop(node_name)
-	if overrides[node_name] then
-		return overrides[node_name]
-	end
-	for prefix, drop_name in pairs(variations) do
-		if node_name:find("^" .. prefix) then
-			return drop_name or node_name
-		end
-	end
-	return node_name
+function ancient_fertilizer.add_group(group_name)
+	-- adds to default_groups for built-in support
+	-- do not use the prefix "group:"
+	default_groups[group_name] = true
 end
 
+-- INTERNALS
+
 function ancient_fertilizer.should_affect(node_name)
-	if disallowed[node_name] == true then
+	if state_cache[node_name] ~= nil then
+		return state_cache[node_name]
+	end
+
+	if disallowed[node_name] then
+		state_cache[node_name] = false
 		return false
 	end
-	if can_duplicate[node_name] == true then
+
+	if can_duplicate[node_name] then
+		state_cache[node_name] = true
 		return true
 	end
-	for group, _ in pairs(ancient_fertilizer.DEFAULT_GROUPS) do
-		if minetest.get_item_group(node_name, group) > 0 then
+
+	for prefix, drop_name in pairs(variations) do
+		if node_name:find("^" .. prefix) then
+			state_cache[node_name] = true
 			return true
 		end
 	end
+
+	for group, _ in pairs(default_groups) do
+		if minetest.get_item_group(node_name, group) > 0 then
+			state_cache[node_name] = true
+			return true
+		end
+	end
+
+	state_cache[node_name] = false
 	return false
+end
+
+function ancient_fertilizer.get_drop(node_name)
+	local drop = drops_cache[node_name]
+	if drop then
+		return drop
+	end
+
+	drop = overrides[node_name]
+	if drop then
+		drops_cache[node_name] = drop
+		return drop
+	end
+
+	for prefix, drop_name in pairs(variations) do
+		if node_name:find("^" .. prefix) then
+			drop = drop_name or node_name
+			drops_cache[node_name] = drop
+			return drop
+		end
+	end
+
+	local basename = node_name:match("^(.+)_%d+$")
+	if basename then
+		drop = basename .. "_1"
+		if minetest.registered_nodes[drop] then
+			drops_cache[node_name] = drop
+			return drop
+		end
+	end
+
+	drops_cache[node_name] = node_name
+	return node_name
 end
