@@ -4,8 +4,8 @@ In this mod, Ancient Stone, abundant in key nutrients like potassium, phosphorus
 Created for [minetest_game](https://content.minetest.net/packages/Minetest/minetest_game/), with gameplay balance in mind. Added support for [mineclone2](https://content.minetest.net/packages/Wuzzy/mineclone2/).
 
 ## Features
-- Ancient Fertilizer duplicates vegetation.
 - Explore the underground in search of Ancient Stone.
+- Ancient Fertilizer duplicates vegetation.
 - New stone type and cracked variations.
 - Simple and extensible.
 
