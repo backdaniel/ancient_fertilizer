@@ -69,11 +69,6 @@ minetest.register_ore({
 	},
 })
 
-if minetest.get_modpath("default") then
-	table.insert(replace, "default:silver_sand")
-	table.insert(replace, "default:gravel")
-end
-
 minetest.register_ore({
 	ore_type        = "blob",
 	ore             = "ancient_fertilizer:ancient_stone",
