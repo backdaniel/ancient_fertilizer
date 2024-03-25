@@ -10,25 +10,10 @@ local replace = {}
 
 if minetest.get_modpath("default") then
 	table.insert(replace, "default:stone")
-	table.insert(replace, "default:stone_with_coal")
-	table.insert(replace, "default:stone_with_iron")
-	table.insert(replace, "default:stone_with_copper")
-	table.insert(replace, "default:stone_with_tin")
-	table.insert(replace, "default:stone_with_gold")
-	table.insert(replace, "default:stone_with_diamond")
-	table.insert(replace, "default:stone_with_mese")
 end
 
 if minetest.get_modpath("mcl_core") then
 	table.insert(replace, "mcl_core:stone")
-	table.insert(replace, "mcl_core:stone_with_coal")
-	table.insert(replace, "mcl_core:stone_with_iron")
-	table.insert(replace, "mcl_core:stone_with_gold")
-end
-
-if minetest.get_modpath("moreores") then
-	table.insert(replace, "moreores:mineral_silver")
-	table.insert(replace, "moreores:mineral_mithril")
 end
 
 minetest.register_ore({
